@@ -6,7 +6,8 @@
   <component name="ChangeListManager">
     <list default="true" id="cf0d0c26-dc73-4c96-8626-49549155ec3e" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/sql/my_blog_db.sql" beforeDir="false" afterPath="$PROJECT_DIR$/sql/my_blog_db.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/blog/yummy-jekyll/footer.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/blog/yummy-jekyll/footer.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -165,7 +166,7 @@
       <workItem from="1701065424876" duration="75000" />
       <workItem from="1701065830278" duration="7452000" />
       <workItem from="1701832016452" duration="12685000" />
-      <workItem from="1701910752335" duration="1181000" />
+      <workItem from="1701910752335" duration="6052000" />
     </task>
     <servers />
   </component>
