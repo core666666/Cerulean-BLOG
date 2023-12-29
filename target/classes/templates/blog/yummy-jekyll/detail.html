@@ -4,8 +4,9 @@
 <body>
 <div class="content">
     <section class="jumbotron"
-             th:style="'background:url(' + @{/blog/yummy-jekyll/assets/images/read.jpg} + ');background-repeat:no-repeat;background-size:100% 100%;background-attachment: fixed;'">
-        <div class="container">
+             th:style="'background:url(&quot;https://liuxue.xdf.cn/wulumuqi/yglh_xjslh_zyzd/W020200716457791883033.png&quot;);background-repeat:no-repeat;background-size:100% 100%;background-attachment: fixed;'">
+    </section>
+    <div class="container">
             <div id="jumbotron-meta-info">
                 <h2 th:text="${blogDetailVO.blogTitle}">标题</h2>
                 <span class="meta-info">

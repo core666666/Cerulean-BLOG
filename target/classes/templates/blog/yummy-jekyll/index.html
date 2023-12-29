@@ -3,11 +3,12 @@
 <div th:replace="blog/yummy-jekyll/header::header('首页','My Blog')"></div>
 <body>
 <div class="content">
-    <section class="jumbotron">
+    <section class="jumbotron"
+             th:style="'background:url(&quot;https://yufeiran.com/content/images/size/w1920/2023/03/wallhaven-6oqzgq.jpg&quot;);background-repeat:no-repeat;background-size:100% 100%;background-attachment: fixed;'">
         <div class="container">
             <h3>Keep trying no matter how hard it seems. it will get easier.</h3>
         </div>
-    </section>s
+    </section>
     <section class="content container">
 
         <div class="row">
@@ -22,10 +23,10 @@
                                         <th:block th:text="${blog.blogTitle}"></th:block>
                                     </a>
                                 </h3>
-                                <p class="post-list-cover-img">
-                                    <a th:href="@{'/blog/' + ${blog.blogId}}"> <img th:src="@{${blog.blogCoverImage}}"
-                                                                                    alt=""></a>
-                                </p>
+<!--                                <p class="post-list-cover-img">-->
+<!--                                    <a th:href="@{'/blog/' + ${blog.blogId}}"> <img th:src="@{${blog.blogCoverImage}}"-->
+<!--                                                                                    alt=""></a>-->
+<!--                                </p>-->
                                 <p class="post-list-meta">
                                     <span class="octicon octicon-calendar"
                                           th:text="${#dates.format(blog.createTime, 'yyyy-MM-dd')}"></span>
