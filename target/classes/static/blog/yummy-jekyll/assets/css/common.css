@@ -289,3 +289,17 @@ aside.comments .comment .reply-body {
     margin: 15px 0;
     width: 100%;
 }
+
+#site-header-brand {
+    /* 预设样式 */
+    transition: color 0.3s ease; /* 平滑过渡效果 */
+}
+
+#site-header-brand:hover {
+    /* 悬停时的样式 */
+    color: #FFC0CB; /* 淡粉色 */
+    text-shadow:
+            1px 1px 0 #999, /* 第一层阴影 */
+            2px 2px 0 #888, /* 第二层阴影 */
+            3px 3px 0 #777; /* 第三层阴影，多层为了增加3D效果 */
+}

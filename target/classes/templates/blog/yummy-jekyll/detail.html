@@ -8,7 +8,7 @@
     </section>
     <div class="container">
             <div id="jumbotron-meta-info">
-                <h2 th:text="${blogDetailVO.blogTitle}">标题</h2>
+                <h2 th:text="${blogDetailVO.blogTitle}" style="text-shadow: 2px 2px 3px #000000;">标题</h2>
                 <span class="meta-info">
                         <span class="octicon octicon-calendar">&nbsp;<th:block
                                 th:text="${#dates.format(blogDetailVO.createTime, 'yyyy-MM-dd')}"></th:block></span>
