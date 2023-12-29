@@ -6,6 +6,19 @@
   <component name="ChangeListManager">
     <list default="true" id="cf0d0c26-dc73-4c96-8626-49549155ec3e" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/admin/dist/img/rand/1.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/admin/dist/img/rand/1.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/admin/dist/img/rand/10.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/admin/dist/img/rand/10.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/admin/dist/img/rand/11.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/admin/dist/img/rand/11.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/admin/dist/img/rand/12.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/admin/dist/img/rand/12.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/admin/dist/img/rand/2.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/admin/dist/img/rand/2.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/admin/dist/img/rand/3.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/admin/dist/img/rand/3.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/admin/dist/img/rand/4.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/admin/dist/img/rand/4.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/admin/dist/img/rand/5.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/admin/dist/img/rand/5.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/admin/dist/img/rand/6.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/admin/dist/img/rand/6.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/admin/dist/img/rand/7.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/admin/dist/img/rand/7.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/admin/dist/img/rand/8.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/admin/dist/img/rand/8.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/admin/dist/img/rand/9.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/admin/dist/img/rand/9.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/admin/dist/js/edit.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/admin/dist/js/edit.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -54,30 +67,30 @@
     <option name="showLibraryContents" value="true" />
     <option name="showMembers" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ASKED_ADD_EXTERNAL_FILES": "true",
-    "RequestMappingsPanelOrder0": "0",
-    "RequestMappingsPanelOrder1": "1",
-    "RequestMappingsPanelWidth0": "75",
-    "RequestMappingsPanelWidth1": "75",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "git-widget-placeholder": "main",
-    "last_opened_file_path": "D:/code/selfcode/Cerulean-BLOG",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "project.structure.last.edited": "项目",
-    "project.structure.proportion": "0.0",
-    "project.structure.side.proportion": "0.0",
-    "settings.editor.selected.configurable": "consents",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
+    &quot;RequestMappingsPanelOrder0&quot;: &quot;0&quot;,
+    &quot;RequestMappingsPanelOrder1&quot;: &quot;1&quot;,
+    &quot;RequestMappingsPanelWidth0&quot;: &quot;75&quot;,
+    &quot;RequestMappingsPanelWidth1&quot;: &quot;75&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;last_opened_file_path&quot;: &quot;D:/code/selfcode/Cerulean-BLOG&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;项目&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;consents&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="D:\code\selfcode\Iceberg-Blog\src\main\resources\templates\blog\amaze" />
@@ -171,7 +184,8 @@
       <workItem from="1701910752335" duration="6487000" />
       <workItem from="1703812639536" duration="599000" />
       <workItem from="1703819993982" duration="1805000" />
-      <workItem from="1703827039489" duration="1199000" />
+      <workItem from="1703827039489" duration="1309000" />
+      <workItem from="1703829033859" duration="1313000" />
     </task>
     <servers />
   </component>
