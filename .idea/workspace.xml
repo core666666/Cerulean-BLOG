@@ -6,26 +6,15 @@
   <component name="ChangeListManager">
     <list default="true" id="cf0d0c26-dc73-4c96-8626-49549155ec3e" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/admin/dist/img/rand/1.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/admin/dist/img/rand/1.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/admin/dist/img/rand/10.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/admin/dist/img/rand/10.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/admin/dist/img/rand/12.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/admin/dist/img/rand/12.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/admin/dist/img/rand/13.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/admin/dist/img/rand/3.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/admin/dist/img/rand/3.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/admin/dist/img/rand/4.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/admin/dist/img/rand/4.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/admin/dist/img/rand/5.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/admin/dist/img/rand/5.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/admin/dist/img/rand/6.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/admin/dist/img/rand/6.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/admin/dist/img/rand/7.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/admin/dist/img/rand/7.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/admin/dist/img/rand/8.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/admin/dist/img/rand/8.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/admin/dist/img/rand/9.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/admin/dist/img/rand/9.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/blog/amaze/images/mountain.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/blog/amaze/images/mountain.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/blog/amaze/images/mountain1.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/blog/amaze/images/mountain3.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/blog/amaze/images/mountain3.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/application-dev.properties" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/application-dev.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/site/blog/my/core/controller/blog/MyBlogController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/site/blog/my/core/controller/blog/MyBlogController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/blog/yummy-jekyll/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/blog/yummy-jekyll/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/site/blog/my/core/controller/blog/MyBlogController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/site/blog/my/core/controller/blog/MyBlogController.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/static/admin/dist/img/rand/1.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/admin/dist/img/rand/1.jpg" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/static/admin/dist/img/rand/10.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/admin/dist/img/rand/10.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/admin/dist/img/rand/11.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/admin/dist/img/rand/11.jpg" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/static/admin/dist/img/rand/12.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/admin/dist/img/rand/12.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/admin/dist/img/rand/2.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/admin/dist/img/rand/2.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/static/admin/dist/img/rand/13.jpg" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/static/admin/dist/img/rand/3.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/admin/dist/img/rand/3.jpg" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/static/admin/dist/img/rand/4.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/admin/dist/img/rand/4.jpg" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/static/admin/dist/img/rand/5.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/admin/dist/img/rand/5.jpg" afterDir="false" />
@@ -34,6 +23,10 @@
       <change beforePath="$PROJECT_DIR$/target/classes/static/admin/dist/img/rand/8.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/admin/dist/img/rand/8.jpg" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/static/admin/dist/img/rand/9.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/admin/dist/img/rand/9.jpg" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/static/admin/dist/js/edit.js" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/admin/dist/js/edit.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/static/blog/amaze/images/mountain.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/blog/amaze/images/mountain.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/static/blog/amaze/images/mountain1.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/static/blog/amaze/images/mountain3.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/blog/amaze/images/mountain3.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/templates/blog/yummy-jekyll/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/blog/yummy-jekyll/index.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/iceberg-blog-4.0.0-SNAPSHOT.jar" beforeDir="false" afterPath="$PROJECT_DIR$/target/iceberg-blog-4.0.0-SNAPSHOT.jar" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/iceberg-blog-4.0.0-SNAPSHOT.jar.original" beforeDir="false" afterPath="$PROJECT_DIR$/target/iceberg-blog-4.0.0-SNAPSHOT.jar.original" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/surefire-reports/TEST-com.site.blog.my.core.IcebergBlogApplicationTests.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/surefire-reports/TEST-com.site.blog.my.core.IcebergBlogApplicationTests.xml" afterDir="false" />
@@ -204,7 +197,7 @@
       <workItem from="1703812639536" duration="599000" />
       <workItem from="1703819993982" duration="1805000" />
       <workItem from="1703827039489" duration="1309000" />
-      <workItem from="1703829033859" duration="2302000" />
+      <workItem from="1703829033859" duration="3285000" />
     </task>
     <servers />
   </component>
