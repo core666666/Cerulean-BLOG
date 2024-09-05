@@ -6,7 +6,7 @@
     <section class="jumbotron"
              th:style="'background:url(&quot;https://yufeiran.com/content/images/size/w1920/2023/03/wallhaven-6oqzgq.jpg&quot;);background-repeat:no-repeat;background-size:100% 100%;background-attachment: fixed;'">
         <div class="container">
-            <h3 style="text-shadow: 6px 6px 3px #000000;">Keep trying no matter how hard it seems. it will get easier.</h3>
+            <h3 id="typing-text" style="text-shadow: 6px 6px 3px #000000; min-height: 1.5em;"></h3>
         </div>
     </section>
     <section class="content container">
@@ -110,6 +110,39 @@
         </div>
     </section>
 </div>
+<script>
+    const texts = [
+        "Keep trying no matter how hard it seems. it will get easier.",
+        "坚持不懈，难也变易。"
+    ];
+    const typingText = document.getElementById('typing-text');
+    let textIndex = 0;
+    let charIndex = 0;
+    let isDeleting = false;
+
+    function typeEffect() {
+        const currentText = texts[textIndex];
+
+        if (!isDeleting && charIndex < currentText.length) {
+            typingText.innerText = currentText.substring(0, charIndex + 1);
+            charIndex++;
+            setTimeout(typeEffect, 50); // 输入速度
+        } else if (isDeleting && charIndex > 0) {
+            typingText.innerText = currentText.substring(0, charIndex - 1);
+            charIndex--;
+            setTimeout(typeEffect, 20); // 删除速度
+        } else {
+            isDeleting = !isDeleting;
+            if (!isDeleting) {
+                textIndex = (textIndex + 1) % texts.length;
+            }
+            setTimeout(typeEffect, isDeleting ? 1000 : 1000); // 完成输入或删除后的暂停时间
+        }
+    }
+
+    // 开始动画
+    typeEffect();
+</script>
 </body>
 <div th:replace="blog/yummy-jekyll/footer::footer"></div>
 </html>
