@@ -21,6 +21,8 @@ public class Blog {
 
     private Byte blogStatus;
 
+    private Byte blogIsTop;
+
     private Long blogViews;
 
     private Byte enableComment;
@@ -65,7 +67,13 @@ public class Blog {
     public void setBlogCoverImage(String blogCoverImage) {
         this.blogCoverImage = blogCoverImage == null ? null : blogCoverImage.trim();
     }
+    public Byte getBlogIsTop() {
+        return blogIsTop;
+    }
 
+    public void setBlogIsTop(Byte blogIsTop) {
+        this.blogIsTop = blogIsTop;
+    }
     public Integer getBlogCategoryId() {
         return blogCategoryId;
     }
@@ -160,6 +168,7 @@ public class Blog {
         sb.append(", blogCategoryName=").append(blogCategoryName);
         sb.append(", blogTags=").append(blogTags);
         sb.append(", blogStatus=").append(blogStatus);
+        sb.append(", blogIsTop=").append(blogIsTop);
         sb.append(", blogViews=").append(blogViews);
         sb.append(", enableComment=").append(enableComment);
         sb.append(", isDeleted=").append(isDeleted);

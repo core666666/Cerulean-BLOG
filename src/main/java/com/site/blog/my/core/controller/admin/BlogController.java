@@ -243,4 +243,20 @@ public class BlogController {
         }
     }
 
+    /*
+        修改文章状态 草稿/发布
+     */
+    @PostMapping("/blogs/setblogsistop")
+    @ResponseBody
+    public Result blogsistop(@RequestBody Long[] ids) {
+        if (ids.length < 1) {
+            return ResultGenerator.genFailResult("参数异常！");
+        }
+        if (blogService.setistopBatch(ids)) {
+            return ResultGenerator.genSuccessResult();
+        } else {
+            return ResultGenerator.genFailResult("设置状态失败");
+        }
+    }
+
 }

@@ -6,7 +6,14 @@
   <component name="ChangeListManager">
     <list default="true" id="cf0d0c26-dc73-4c96-8626-49549155ec3e" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/blog/yummy-jekyll/assets/css/common.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/blog/yummy-jekyll/assets/css/common.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/site/blog/my/core/controller/admin/BlogController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/site/blog/my/core/controller/admin/BlogController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/site/blog/my/core/entity/Blog.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/site/blog/my/core/entity/Blog.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/site/blog/my/core/service/BlogService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/site/blog/my/core/service/BlogService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/site/blog/my/core/service/impl/BlogServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/site/blog/my/core/service/impl/BlogServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/mapper/BlogMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/mapper/BlogMapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/admin/dist/js/blog.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/admin/dist/js/blog.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/site/blog/my/core/controller/admin/BlogController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/site/blog/my/core/controller/admin/BlogController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/site/blog/my/core/service/impl/BlogServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/site/blog/my/core/service/impl/BlogServiceImpl.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -180,7 +187,7 @@
       <workItem from="1722322595735" duration="9000" />
       <workItem from="1725525453603" duration="3793000" />
       <workItem from="1725529406887" duration="179000" />
-      <workItem from="1730873950358" duration="9385000" />
+      <workItem from="1730873950358" duration="11232000" />
     </task>
     <servers />
   </component>

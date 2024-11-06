@@ -17,6 +17,8 @@ public interface BlogService {
 
     Boolean setstatusBatch(Long[] ids);
 
+    Boolean setistopBatch(Long[] ids);
+
     int getTotalBlogs();
 
     /**

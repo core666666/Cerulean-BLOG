@@ -127,6 +127,23 @@ public class BlogServiceImpl implements BlogService {
     }
 
     @Override
+    public Boolean setistopBatch(Long[] ids) {
+        try {
+            for (Long id : ids) {
+                Blog blogForUpdate = blogMapper.selectByPrimaryKey(id);
+                if (blogForUpdate.getBlogIsTop() == 1)
+                    blogForUpdate.setBlogIsTop((byte) 0);
+                else
+                    blogForUpdate.setBlogIsTop((byte) 1);
+                blogMapper.updateByPrimaryKeySelective(blogForUpdate);
+            }
+            return true;
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    @Override
     public int getTotalBlogs() {
         return blogMapper.getTotalBlogs(null);
     }
