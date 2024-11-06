@@ -6,14 +6,13 @@
   <component name="ChangeListManager">
     <list default="true" id="cf0d0c26-dc73-4c96-8626-49549155ec3e" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/site/blog/my/core/controller/vo/BlogListVO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/site/blog/my/core/controller/vo/BlogListVO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/site/blog/my/core/service/impl/BlogServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/site/blog/my/core/service/impl/BlogServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/mapper/BlogTagMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/mapper/BlogTagMapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/blog/yummy-jekyll/plugins/octicons/octicons/octicons.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/blog/yummy-jekyll/plugins/octicons/octicons/octicons.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/blog/yummy-jekyll/detail.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/blog/yummy-jekyll/detail.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/templates/blog/yummy-jekyll/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/blog/yummy-jekyll/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/blog/default/css/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/blog/default/css/style.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/templates/blog/default/header.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/blog/default/header.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/iceberg-blog-4.0.0-SNAPSHOT.jar" beforeDir="false" afterPath="$PROJECT_DIR$/target/iceberg-blog-4.0.0-SNAPSHOT.jar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/iceberg-blog-4.0.0-SNAPSHOT.jar.original" beforeDir="false" afterPath="$PROJECT_DIR$/target/iceberg-blog-4.0.0-SNAPSHOT.jar.original" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/surefire-reports/TEST-com.site.blog.my.core.IcebergBlogApplicationTests.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/surefire-reports/TEST-com.site.blog.my.core.IcebergBlogApplicationTests.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/surefire-reports/com.site.blog.my.core.IcebergBlogApplicationTests.txt" beforeDir="false" afterPath="$PROJECT_DIR$/target/surefire-reports/com.site.blog.my.core.IcebergBlogApplicationTests.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/site/blog/my/core/service/impl/BlogServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/site/blog/my/core/service/impl/BlogServiceImpl.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -185,7 +184,9 @@
       <workItem from="1721295336463" duration="4000" />
       <workItem from="1722322575199" duration="5000" />
       <workItem from="1722322595735" duration="9000" />
-      <workItem from="1725525453603" duration="2340000" />
+      <workItem from="1725525453603" duration="3793000" />
+      <workItem from="1725529406887" duration="179000" />
+      <workItem from="1730873950358" duration="8731000" />
     </task>
     <servers />
   </component>

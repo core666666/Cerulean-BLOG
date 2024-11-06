@@ -1,6 +1,249 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <div th:replace="blog/yummy-jekyll/header::header('首页','My Blog')"></div>
+<style>
+    .post-list {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        display: grid;
+        gap: 0.8rem;  /* 增加文章之间的间距 */
+    }
+
+    .post-list-item {
+        background: white;
+        border-radius: 12px;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+        transition: all 0.3s ease;
+        position: relative;
+        overflow: hidden;
+        padding: 2rem;  /* 增加内边距 */
+        border: 1px solid #eaeaea;
+    }
+
+    .post-list-item:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 8px 24px rgba(0,0,0,0.2);
+        border-color: #d0d0d0;
+    }
+
+    /* 文章标题样式调整 */
+    .post-list-title {
+        margin: 0 0 1.2rem 0;
+    }
+
+    .post-list-title a {
+        color: #1f83f0;          /* 与侧边栏颜色一致 */
+        text-decoration: none;
+        font-size: 2.1rem;    /* 保持较大尺寸但稍微调整 */
+        font-weight: 600;     /* 与侧边栏一致的字重 */
+        line-height: 1.4;
+        transition: color 0.3s ease;
+        display: block;
+    }
+
+    .post-list-title a:hover {
+        color: #0f4886;
+    }
+
+    /* 右侧边栏卡片样式 */
+    .sidebar-card {
+        background: white;
+        border-radius: 12px;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+        padding: 1.5rem;
+        margin-bottom: 2rem;
+        border: 1px solid #eaeaea;
+        transition: all 0.3s ease;
+    }
+
+    .sidebar-card:hover {
+        box-shadow: 0 8px 24px rgba(0,0,0,0.2);
+        transform: translateY(-3px);
+        border-color: #d0d0d0;
+    }
+
+    .sidebar-title {
+        margin-top: 0;
+        margin-bottom: 1rem;
+        font-size: 1.5rem;
+        color: #333;
+        padding-bottom: 0.5rem;
+        border-bottom: 2px solid #007bff;
+    }
+
+    .sidebar-card .list-group {
+        margin-bottom: 0;
+    }
+
+    .sidebar-card .list-group-item {
+        border: none;
+        padding: 0.8rem 0;
+        background: transparent;
+        border-bottom: 1px solid #eee;
+        transition: all 0.3s ease;
+    }
+
+    .sidebar-card .list-group-item:last-child {
+        border-bottom: none;
+    }
+
+    .sidebar-card .list-group-item a {
+        color: #555;
+        font-weight: 600;
+        transition: color 0.3s ease;
+    }
+
+    .sidebar-card .list-group-item:hover {
+        background: #f8f9fa;
+        padding-left: 0.5rem;
+    }
+
+    .sidebar-card .list-group-item:hover a {
+        color: #007bff;
+    }
+
+    .sidebar-card .badge {
+        background: #007bff;
+        transition: all 0.3s ease;
+    }
+
+    .sidebar-card .list-group-item:hover .badge {
+        background: #0056b3;
+    }
+
+    /* 文章列表元数据样式 */
+    .post-list-meta {
+        display: flex;
+        align-items: center;
+        color: #888;        /* 降低对比度 */
+        font-size: 0.85rem; /* 调小字体 */
+        margin-top: 1.2rem;
+        padding-top: 1.2rem;
+        border-top: 1px solid #eee;
+        gap: 1.5rem;       /* 增加元素之间的间距 */
+    }
+
+    .post-list-meta .octicon {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        color: #999;       /* 图标颜色稍微淡一点 */
+        font-size: 0.85rem; /* 保持与文字一致 */
+    }
+
+    /* 优化分页样式 */
+    .pagination {
+        margin-top: 2rem;
+    }
+
+    .pagination li a {
+        transition: all 0.3s ease;
+    }
+
+    .pagination li:not(.disabled):not(.active) a:hover {
+        background: #007bff;
+        color: white;
+    }
+
+    /* 为卡片添加渐变边框效果 */
+    .post-list-item::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 3px;
+        background: linear-gradient(to right, #007bff, #00ff88);
+        opacity: 0;
+        transition: opacity 0.3s ease;
+    }
+
+    .post-list-item:hover::before {
+        opacity: 1;
+    }
+
+    .post-list-item:hover .post-list-title a {
+        color: #007bff;
+    }
+
+    /* 分页容器样式 */
+    .pagination {
+        display: flex;
+        justify-content: center;
+        gap: 0.5rem;
+        margin-top: 2rem;
+        padding: 1rem;
+        background: white;
+        border-radius: 12px;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+        border: 1px solid #eaeaea;
+        transition: all 0.3s ease;
+    }
+
+    .pagination:hover {
+        box-shadow: 0 8px 24px rgba(0,0,0,0.2);
+        transform: translateY(-3px);
+        border-color: #d0d0d0;
+    }
+
+    /* 分页项样式 */
+    .pagination li {
+        display: inline-block;
+    }
+
+    .pagination li a {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        min-width: 40px;
+        height: 40px;
+        padding: 0.5rem;
+        border-radius: 8px;
+        color: #555;
+        text-decoration: none;
+        background: transparent;
+        border: 1px solid #eaeaea;
+        transition: all 0.3s ease;
+    }
+
+    /* 普通页码hover效果 */
+    .pagination li:not(.disabled):not(.active) a:hover {
+        background: linear-gradient(to right, #007bff, #00a6ff);
+        color: white;
+        border-color: transparent;
+        transform: translateY(-2px);
+    }
+
+    /* 当前页码样式 */
+    .pagination li.active a {
+        background: #007bff;
+        color: white;
+        border-color: transparent;
+        font-weight: 600;
+    }
+
+    /* 禁用状态样式 */
+    .pagination li.disabled a {
+        color: #ccc;
+        cursor: not-allowed;
+        border-color: #eee;
+        pointer-events: none;
+    }
+
+    /* 前后箭头特殊样式 */
+    .pagination li:first-child a,
+    .pagination li:last-child a {
+        font-weight: bold;
+        background: #f8f9fa;
+    }
+
+    .pagination li:first-child:not(.disabled) a:hover,
+    .pagination li:last-child:not(.disabled) a:hover {
+        background: linear-gradient(to right, #007bff, #00a6ff);
+        color: white;
+    }
+</style>
 <body>
 <div class="content">
     <section class="jumbotron"
@@ -10,7 +253,6 @@
         </div>
     </section>
     <section class="content container">
-
         <div class="row">
             <!-- Post List -->
             <div class="col-md-8">
@@ -18,18 +260,17 @@
                     <th:block th:if="${null != blogPageResult}">
                         <th:block th:each="blog,iterStat : ${blogPageResult.list}">
                             <li class="post-list-item">
-                                <h3 class="post-list-title">
+                                <h1 class="post-list-title">
                                     <a class="hvr-underline-from-center" th:href="@{'/blog/' + ${blog.blogId}}">
                                         <th:block th:text="${blog.blogTitle}"></th:block>
+<!--                                        <th:block th:text="${blog.blogViews}"></th:block>-->
                                     </a>
-                                </h3>
-<!--                                <p class="post-list-cover-img">-->
-<!--                                    <a th:href="@{'/blog/' + ${blog.blogId}}"> <img th:src="@{${blog.blogCoverImage}}"-->
-<!--                                                                                    alt=""></a>-->
-<!--                                </p>-->
+                                </h1>
                                 <p class="post-list-meta">
                                     <span class="octicon octicon-calendar"
                                           th:text="${#dates.format(blog.createTime, 'yyyy-MM-dd')}"></span>
+                                    <span class="octicon octicon-eye">
+                                    <span th:text="${blog.blogViews}"></span> 阅读
                                 </p>
                             </li>
                         </th:block>
@@ -38,73 +279,96 @@
 
                 <!-- Pagination -->
                 <th:block th:if="${null != blogPageResult}">
-                <ul class="pagination text-align">
-                    <li th:class="${blogPageResult.currPage==1}?'disabled' : ''"><a
-                            th:href="@{${blogPageResult.currPage==1}?'##':'/page/' + ${blogPageResult.currPage-1}}">&laquo;</a>
-                    </li>
-                    <li th:if="${blogPageResult.currPage-3 >=1}"><a
-                            th:href="@{'/page/' + ${blogPageResult.currPage-3}}"
-                            th:text="${blogPageResult.currPage -3}">1</a></li>
-                    <li th:if="${blogPageResult.currPage-2 >=1}"><a
-                            th:href="@{'/page/' + ${blogPageResult.currPage-2}}"
-                            th:text="${blogPageResult.currPage -2}">1</a></li>
-                    <li th:if="${blogPageResult.currPage-1 >=1}"><a
-                            th:href="@{'/page/' + ${blogPageResult.currPage-1}}"
-                            th:text="${blogPageResult.currPage -1}">1</a></li>
-                    <li class="active"><a href="#" th:text="${blogPageResult.currPage}">1</a></li>
-                    <li th:if="${blogPageResult.currPage+1 <=blogPageResult.totalPage}"><a
-                            th:href="@{'/page/' + ${blogPageResult.currPage+1}}"
-                            th:text="${blogPageResult.currPage +1}">1</a></li>
-                    <li th:if="${blogPageResult.currPage+2 <=blogPageResult.totalPage}"><a
-                            th:href="@{'/page/' + ${blogPageResult.currPage+2}}"
-                            th:text="${blogPageResult.currPage +2}">1</a></li>
-                    <li th:if="${blogPageResult.currPage+3 <=blogPageResult.totalPage}"><a
-                            th:href="@{'/page/' + ${blogPageResult.currPage+3}}"
-                            th:text="${blogPageResult.currPage +3}">1</a></li>
-                    <li th:class="${blogPageResult.currPage==blogPageResult.totalPage}?'disabled' : ''"><a
-                            th:href="@{${blogPageResult.currPage==blogPageResult.totalPage}?'##' : '/page/' + ${blogPageResult.currPage+1}}">&raquo;</a>
-                    </li>
-                </ul>
+                    <ul class="pagination text-align">
+                        <li th:class="${blogPageResult.currPage==1}?'disabled' : ''">
+                            <a th:href="@{${blogPageResult.currPage==1}?'##':'/page/' + ${blogPageResult.currPage-1}}">&laquo;</a>
+                        </li>
+                        <li th:if="${blogPageResult.currPage-3 >=1}">
+                            <a th:href="@{'/page/' + ${blogPageResult.currPage-3}}"
+                               th:text="${blogPageResult.currPage -3}">1</a>
+                        </li>
+                        <li th:if="${blogPageResult.currPage-2 >=1}">
+                            <a th:href="@{'/page/' + ${blogPageResult.currPage-2}}"
+                               th:text="${blogPageResult.currPage -2}">1</a>
+                        </li>
+                        <li th:if="${blogPageResult.currPage-1 >=1}">
+                            <a th:href="@{'/page/' + ${blogPageResult.currPage-1}}"
+                               th:text="${blogPageResult.currPage -1}">1</a>
+                        </li>
+                        <li class="active"><a href="#" th:text="${blogPageResult.currPage}">1</a></li>
+                        <li th:if="${blogPageResult.currPage+1 <=blogPageResult.totalPage}">
+                            <a th:href="@{'/page/' + ${blogPageResult.currPage+1}}"
+                               th:text="${blogPageResult.currPage +1}">1</a>
+                        </li>
+                        <li th:if="${blogPageResult.currPage+2 <=blogPageResult.totalPage}">
+                            <a th:href="@{'/page/' + ${blogPageResult.currPage+2}}"
+                               th:text="${blogPageResult.currPage +2}">1</a>
+                        </li>
+                        <li th:if="${blogPageResult.currPage+3 <=blogPageResult.totalPage}">
+                            <a th:href="@{'/page/' + ${blogPageResult.currPage+3}}"
+                               th:text="${blogPageResult.currPage +3}">1</a>
+                        </li>
+                        <li th:class="${blogPageResult.currPage==blogPageResult.totalPage}?'disabled' : ''">
+                            <a th:href="@{${blogPageResult.currPage==blogPageResult.totalPage}?'##' : '/page/' + ${blogPageResult.currPage+1}}">&raquo;</a>
+                        </li>
+                    </ul>
                 </th:block>
             </div>
 
             <div class="col-md-4">
-                <h3 class="sidebar-title">点击最多</h3>
-                <div id="blog-categories">
-                    <ul class="list-group">
-                        <th:block th:if="${null != hotBlogs}">
-                            <th:block th:each="hotBlog : ${hotBlogs}">
-                                <li class="list-group-item"><a th:href="@{'/blog/' + ${hotBlog.blogId}}">
-                                    <th:block th:text="${hotBlog.blogTitle}"></th:block>
-                                </a></li>
+                <!-- 点击最多 -->
+                <div class="sidebar-card">
+                    <h3 class="sidebar-title">点击最多</h3>
+                    <div id="blog-categories">
+                        <ul class="list-group">
+                            <th:block th:if="${null != hotBlogs}">
+                                <th:block th:each="hotBlog : ${hotBlogs}">
+                                    <li class="list-group-item">
+                                        <a th:href="@{'/blog/' + ${hotBlog.blogId}}">
+                                            <th:block th:text="${hotBlog.blogTitle}"></th:block>
+                                        </a>
+                                    </li>
+                                </th:block>
                             </th:block>
-                        </th:block>
-                    </ul>
+                        </ul>
+                    </div>
                 </div>
-                <h3 class="sidebar-title">最新发布</h3>
-                <div id="blog-categories">
-                    <ul class="list-group">
-                        <th:block th:if="${null != newBlogs}">
-                            <th:block th:each="newBlog : ${newBlogs}">
-                                <li class="list-group-item"><a th:href="@{'/blog/' + ${newBlog.blogId}}">
-                                    <th:block th:text="${newBlog.blogTitle}"></th:block>
-                                </a></li>
+
+                <!-- 最新发布 -->
+                <div class="sidebar-card">
+                    <h3 class="sidebar-title">最新发布</h3>
+                    <div id="blog-categories">
+                        <ul class="list-group">
+                            <th:block th:if="${null != newBlogs}">
+                                <th:block th:each="newBlog : ${newBlogs}">
+                                    <li class="list-group-item">
+                                        <a th:href="@{'/blog/' + ${newBlog.blogId}}">
+                                            <th:block th:text="${newBlog.blogTitle}"></th:block>
+                                        </a>
+                                    </li>
+                                </th:block>
                             </th:block>
-                        </th:block>
-                    </ul>
+                        </ul>
+                    </div>
                 </div>
-                <h3 class="sidebar-title">标签栏</h3>
-                <div id="blog-categories">
-                    <ul class="list-group">
-                        <th:block th:if="${null != hotTags}">
-                            <th:block th:each="hotTag : ${hotTags}">
-                                <li class="list-group-item"><a th:href="@{'/tag/' + ${hotTag.tagName}}">
-                                    <th:block th:text="${hotTag.tagName}"></th:block>
-                                    <span class="badge" th:text="${hotTag.tagCount}">1</span>
-                                </a></li>
+
+                <!-- 标签栏 -->
+                <div class="sidebar-card">
+                    <h3 class="sidebar-title">标签栏</h3>
+                    <div id="blog-categories">
+                        <ul class="list-group">
+                            <th:block th:if="${null != hotTags}">
+                                <th:block th:each="hotTag : ${hotTags}">
+                                    <li class="list-group-item">
+                                        <a th:href="@{'/tag/' + ${hotTag.tagName}}">
+                                            <th:block th:text="${hotTag.tagName}"></th:block>
+                                            <span class="badge" th:text="${hotTag.tagCount}">1</span>
+                                        </a>
+                                    </li>
+                                </th:block>
                             </th:block>
-                        </th:block>
-                    </ul>
+                        </ul>
+                    </div>
                 </div>
             </div>
         </div>
@@ -126,21 +390,20 @@
         if (!isDeleting && charIndex < currentText.length) {
             typingText.innerText = currentText.substring(0, charIndex + 1);
             charIndex++;
-            setTimeout(typeEffect, 50); // 输入速度
+            setTimeout(typeEffect, 50);
         } else if (isDeleting && charIndex > 0) {
             typingText.innerText = currentText.substring(0, charIndex - 1);
             charIndex--;
-            setTimeout(typeEffect, 20); // 删除速度
+            setTimeout(typeEffect, 20);
         } else {
             isDeleting = !isDeleting;
             if (!isDeleting) {
                 textIndex = (textIndex + 1) % texts.length;
             }
-            setTimeout(typeEffect, isDeleting ? 1000 : 1000); // 完成输入或删除后的暂停时间
+            setTimeout(typeEffect, isDeleting ? 1000 : 1000);
         }
     }
 
-    // 开始动画
     typeEffect();
 </script>
 </body>
