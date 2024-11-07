@@ -6,9 +6,11 @@
   <component name="ChangeListManager">
     <list default="true" id="cf0d0c26-dc73-4c96-8626-49549155ec3e" name="Default Changelist" comment="Default ChangelistDefault Changelist">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/site/blog/my/core/controller/blog/MyBlogController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/site/blog/my/core/controller/blog/MyBlogController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/blog/yummy-jekyll/header.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/blog/yummy-jekyll/header.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/site/blog/my/core/controller/blog/MyBlogController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/site/blog/my/core/controller/blog/MyBlogController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/static/admin/plugins/editormd/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/iceberg-blog-4.0.0-SNAPSHOT.jar" beforeDir="false" afterPath="$PROJECT_DIR$/target/iceberg-blog-4.0.0-SNAPSHOT.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/iceberg-blog-4.0.0-SNAPSHOT.jar.original" beforeDir="false" afterPath="$PROJECT_DIR$/target/iceberg-blog-4.0.0-SNAPSHOT.jar.original" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/surefire-reports/TEST-com.site.blog.my.core.IcebergBlogApplicationTests.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/surefire-reports/TEST-com.site.blog.my.core.IcebergBlogApplicationTests.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/surefire-reports/com.site.blog.my.core.IcebergBlogApplicationTests.txt" beforeDir="false" afterPath="$PROJECT_DIR$/target/surefire-reports/com.site.blog.my.core.IcebergBlogApplicationTests.txt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -183,7 +185,7 @@
       <workItem from="1725525453603" duration="3793000" />
       <workItem from="1725529406887" duration="179000" />
       <workItem from="1730873950358" duration="11447000" />
-      <workItem from="1730941314319" duration="15486000" />
+      <workItem from="1730941314319" duration="16790000" />
     </task>
     <servers />
   </component>
