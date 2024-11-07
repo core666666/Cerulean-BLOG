@@ -244,7 +244,7 @@ public class BlogController {
     }
 
     /*
-        修改文章状态 草稿/发布
+        修改文章置顶
      */
     @PostMapping("/blogs/setblogsistop")
     @ResponseBody

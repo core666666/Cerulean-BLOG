@@ -261,7 +261,7 @@
                         <th:block th:each="blog,iterStat : ${blogPageResult.list}">
                             <li class="post-list-item">
                                 <h1 class="post-list-title">
-                                    <a class="hvr-underline-from-center" th:href="@{'/blog/' + ${blog.blogId}}">
+                                    <a th:href="@{'/blog/' + ${blog.blogId}}"><!-- class="hvr-underline-from-center"-->
                                         <th:block th:text="${blog.blogTitle}"></th:block>
 <!--                                        <th:block th:text="${blog.blogViews}"></th:block>-->
                                     </a>

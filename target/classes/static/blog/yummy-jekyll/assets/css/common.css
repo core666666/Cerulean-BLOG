@@ -18,12 +18,14 @@
 
     color: #000;
     background: #fff;
+    border-radius: 50px; /* 添加初始圆角 */
 
-    -webkit-transition: all 0.5s ease;
-    -moz-transition: all 0.5s ease;
-    -ms-transition: all 0.5s ease;
-    -o-transition: all 0.5s ease;
-    transition: all 0.5s ease;
+    /* 添加 border-radius 到过渡效果中 */
+    -webkit-transition: all 0.5s ease, border-radius 0.5s ease;
+    -moz-transition: all 0.5s ease, border-radius 0.5s ease;
+    -ms-transition: all 0.5s ease, border-radius 0.5s ease;
+    -o-transition: all 0.5s ease, border-radius 0.5s ease;
+    transition: all 0.5s ease, border-radius 0.5s ease;
 }
 
 .site-header #site-header-brand {
@@ -68,6 +70,7 @@
 .site-header.site-header-nav-scrolled {
     margin: 0;
     background-color: white;
+    border-radius: 0; /* 滚动后去掉圆角 */
 
     -webkit-box-shadow: 0 0.125em 0.125em 0 rgba(0, 0, 0, 0.125);
     -moz-box-shadow: 0 0.125em 0.125em 0 rgba(0, 0, 0, 0.125);
