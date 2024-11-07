@@ -6,18 +6,9 @@
   <component name="ChangeListManager">
     <list default="true" id="cf0d0c26-dc73-4c96-8626-49549155ec3e" name="Default Changelist" comment="Default ChangelistDefault Changelist">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/site/blog/my/core/controller/admin/BlogController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/site/blog/my/core/controller/admin/BlogController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/site/blog/my/core/controller/blog/MyBlogController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/site/blog/my/core/controller/blog/MyBlogController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/site/blog/my/core/controller/vo/BlogListVO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/site/blog/my/core/controller/vo/BlogListVO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/site/blog/my/core/service/impl/BlogServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/site/blog/my/core/service/impl/BlogServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/mapper/BlogMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/mapper/BlogMapper.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/admin/dist/js/blog.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/admin/dist/js/blog.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/admin/dist/js/edit.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/admin/dist/js/edit.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/admin/edit.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/admin/edit.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/blog/yummy-jekyll/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/blog/yummy-jekyll/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/site/blog/my/core/controller/admin/BlogController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/site/blog/my/core/controller/admin/BlogController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/blog/yummy-jekyll/header.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/blog/yummy-jekyll/header.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/site/blog/my/core/controller/blog/MyBlogController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/site/blog/my/core/controller/blog/MyBlogController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/site/blog/my/core/service/impl/BlogServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/site/blog/my/core/service/impl/BlogServiceImpl.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -192,7 +183,7 @@
       <workItem from="1725525453603" duration="3793000" />
       <workItem from="1725529406887" duration="179000" />
       <workItem from="1730873950358" duration="11447000" />
-      <workItem from="1730941314319" duration="13792000" />
+      <workItem from="1730941314319" duration="15486000" />
     </task>
     <servers />
   </component>

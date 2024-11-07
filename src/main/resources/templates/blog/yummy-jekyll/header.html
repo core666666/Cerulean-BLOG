@@ -27,6 +27,126 @@
     <link rel="stylesheet" th:href="@{/blog/yummy-jekyll/assets/css/open-source.css}">
     <link rel="stylesheet" th:href="@{/blog/yummy-jekyll/assets/css/sidebar-popular-repo.css}">
     <script type="text/javascript" th:src="@{/blog/yummy-jekyll/plugins/bootstrap/dist/js/bootstrap.min.js}"></script>
+    <style>
+        /* 搜索框容器 */
+        .search-container {
+            position: absolute;  /* 改为绝对定位 */
+            right: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            z-index: 100;
+        }
+
+        /* 搜索框主体 */
+        .search-box {
+            width: 40px;
+            height: 40px;
+            border-radius: 20px;
+            border: 2px solid #e0e0e0;
+            padding: 5px;
+            outline: none;
+            transition: all 0.3s ease;
+            background-color: transparent;  /* 初始状态透明背景 */
+            padding-left: 40px;  /* 为搜索图标留出空间 */
+            cursor: pointer;
+            font-size: 16px;
+            color: #333;
+            position: relative;
+        }
+
+        /* 搜索框展开状态 */
+        .search-box.expanded {
+            width: 240px;
+            background-color: #fff;
+            border-color: #4a90e2;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            padding-right: 35px;  /* 为清除按钮留出空间 */
+        }
+
+        /* 搜索框获得焦点状态 */
+        .search-box:focus {
+            width: 240px;
+            background-color: #fff;
+            border-color: #4a90e2;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            padding-right: 35px;
+        }
+
+        /* 搜索按钮 */
+        .search-button {
+            position: absolute;
+            left: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 20px;
+            height: 20px;
+            border: none;
+            background: transparent;
+            cursor: pointer;
+            padding: 0;
+            outline: none;
+            z-index: 2;
+        }
+
+        /* 搜索图标 */
+        .search-icon {
+            width: 20px;
+            height: 20px;
+            fill: #666;
+            transition: fill 0.3s ease;
+        }
+
+        /* 清除按钮 */
+        .clear-button {
+            position: absolute;
+            right: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 20px;
+            height: 20px;
+            border: none;
+            background: transparent;
+            cursor: pointer;
+            display: none;
+            padding: 0;
+            outline: none;
+            z-index: 2;
+        }
+
+        /* 显示清除按钮（当搜索框有内容时） */
+        .search-box.has-content + .clear-button {
+            display: block;
+        }
+
+        /* 清除图标 */
+        .clear-icon {
+            width: 14px;
+            height: 14px;
+            fill: #999;
+            transition: fill 0.3s ease;
+        }
+
+        .clear-icon:hover {
+            fill: #666;
+        }
+
+        /* 搜索框占位符文本样式 */
+        .search-box::placeholder {
+            color: #999;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .search-box.expanded::placeholder {
+            opacity: 1;
+        }
+
+        /* 取消对导航栏的影响 */
+        .site-header-nav {
+            position: relative;
+            margin-right: 60px;  /* 只为搜索图标预留空间 */
+        }
+    </style>
 </head>
 <body>
 <header class="site-header">
@@ -34,6 +154,20 @@
         <a id="site-header-brand" href="/" title="personal blog">
             <span class="octicon octicon-rocket" th:text="| ${configurations.get('websiteName')}|"></span>
         </a>
+        <!-- 搜索框 -->
+        <div class="search-container">
+            <button type="button" class="search-button" id="search-button">
+                <svg class="search-icon" viewBox="0 0 24 24">
+                    <path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/>
+                </svg>
+            </button>
+            <input type="text" class="search-box" id="search-input" placeholder="输入关键字搜索...">
+            <button type="button" class="clear-button" id="clear-button">
+                <svg class="clear-icon" viewBox="0 0 24 24">
+                    <path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/>
+                </svg>
+            </button>
+        </div>
         <nav class="site-header-nav" role="navigation">
             <a th:href="@{/index}" class=" site-header-nav-item hvr-underline-from-center">
                 Home
@@ -53,6 +187,83 @@
         </nav>
     </div>
 </header>
+<script>
+    $(document).ready(function() {
+        const searchBox = $('#search-input');
+        const searchButton = $('#search-button');
+        const clearButton = $('#clear-button');
+
+        // 执行搜索函数
+        function performSearch() {
+            const keyword = searchBox.val().trim();
+            if (keyword) {
+                if (!validLength(keyword, 20)) {
+                    alert("搜索关键字长度不能大于20");
+                    return false;
+                }
+                // 跳转到搜索结果页
+                window.location.href = '/search/' + encodeURIComponent(keyword);
+            }
+        }
+
+        // 监听输入框内容变化
+        searchBox.on('input', function() {
+            if ($(this).val().trim()) {
+                $(this).addClass('has-content');
+                clearButton.show();
+            } else {
+                $(this).removeClass('has-content');
+                clearButton.hide();
+            }
+        });
+
+        // 点击搜索按钮或搜索框
+        searchButton.add(searchBox).on('click', function() {
+            searchBox.addClass('expanded').focus();
+        });
+
+        // 点击清除按钮
+        clearButton.on('click', function() {
+            searchBox.val('').removeClass('has-content').focus();
+            clearButton.hide();
+        });
+
+        // 点击其他地方收起（如果搜索框为空）
+        $(document).on('click', function(e) {
+            if (!$(e.target).closest('.search-container').length) {
+                if (!searchBox.val().trim()) {
+                    searchBox.removeClass('expanded');
+                    clearButton.hide();
+                }
+            }
+        });
+
+        // 搜索逻辑
+        searchButton.on('click', function(e) {
+            if (searchBox.hasClass('expanded') && searchBox.val().trim()) {
+                e.preventDefault();
+                performSearch();
+            }
+        });
+
+        // 监听回车键
+        searchBox.on('keypress', function(e) {
+            if (e.which === 13) {  // 回车键
+                performSearch();
+            }
+        });
+    });
+
+    function validLength(str, length) {
+        if (str == null || str == undefined) {
+            return false;
+        }
+        if (str.trim().length > length) {
+            return false;
+        }
+        return true;
+    }
+</script>
 </body>
 </html>
 
