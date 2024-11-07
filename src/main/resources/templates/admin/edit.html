@@ -125,6 +125,14 @@
                                            th:checked="${null !=blog and null !=blog.blogStatus and blog.blogStatus==0} ?true:false"/>&nbsp;草稿&nbsp;
                                 </div>
                                 <div class="form-group">
+                                    <label class="control-label">文章是否置顶:&nbsp;</label>
+                                    <input name="blogIsTop" type="radio" id="publish"
+                                           th:checked="${null==blog||(null !=blog and null !=blog.blogIsTop and blog.blogIsTop==1)} ?true:false"
+                                           value="1"/>&nbsp;置顶&nbsp;
+                                    <input name="blogIsTop" type="radio" id="draft" value="0" checked=true
+                                           th:checked="${null !=blog and null !=blog.blogIsTop and blog.blogIsTop==0} ?true:false"/>&nbsp;不置顶&nbsp;
+                                </div>
+                                <div class="form-group">
                                     <label class="control-label">是否允许评论:&nbsp;</label>
                                     <input name="enableComment" type="radio" id="enableCommentTrue" checked=true
                                            th:checked="${null==blog||(null !=blog and null !=blog.enableComment and blog.enableComment==0)} ?true:false"

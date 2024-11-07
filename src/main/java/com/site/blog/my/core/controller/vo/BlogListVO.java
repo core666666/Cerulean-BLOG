@@ -23,6 +23,26 @@ public class BlogListVO implements Serializable {
 
     private Long blogViews;
 
+    private Byte blogIsTop;
+
+    private String blogTags;
+
+    public String getBlogTags() {
+        return blogTags;
+    }
+
+    public void setBlogTags(String blogTags) {
+        this.blogTags = blogTags;
+    }
+
+    public Byte getBlogIsTop() {
+        return blogIsTop;
+    }
+
+    public void setBlogIsTop(Byte blogIsTop) {
+        this.blogIsTop = blogIsTop;
+    }
+
     public Long getBlogViews() {
         return blogViews;
     }

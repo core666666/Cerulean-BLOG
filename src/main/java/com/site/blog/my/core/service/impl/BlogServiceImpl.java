@@ -165,6 +165,7 @@ public class BlogServiceImpl implements BlogService {
         blogForUpdate.setBlogContent(blog.getBlogContent());
         blogForUpdate.setBlogCoverImage(blog.getBlogCoverImage());
         blogForUpdate.setBlogStatus(blog.getBlogStatus());
+        blogForUpdate.setBlogIsTop(blog.getBlogIsTop());
         blogForUpdate.setEnableComment(blog.getEnableComment());
         BlogCategory blogCategory = categoryMapper.selectByPrimaryKey(blog.getBlogCategoryId());
         if (blogCategory == null) {
@@ -221,6 +222,9 @@ public class BlogServiceImpl implements BlogService {
         return "修改失败";
     }
 
+    /*
+    * 主页博客列表
+    * */
     @Override
     public PageResult getBlogsForIndexPage(int page) {
         Map params = new HashMap();

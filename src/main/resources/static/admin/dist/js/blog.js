@@ -8,7 +8,7 @@ $(function () {
             {label: '预览图', name: 'blogCoverImage', index: 'blogCoverImage', width: 120, formatter: coverImageFormatter},
             {label: '浏览量', name: 'blogViews', index: 'blogViews', width: 60},
             {label: '状态', name: 'blogStatus', index: 'blogStatus', width: 60, formatter: statusFormatter},
-            {label: '置顶', name: 'isTop', index: 'blogIsTop', width: 60, formatter: isTopFormatter},
+            {label: '置顶', name: 'blogIsTop', index: 'blogIsTop', width: 80, formatter: isTopFormatter},
             {label: '博客分类', name: 'blogCategoryName', index: 'blogCategoryName', width: 60},
             {label: '添加时间', name: 'createTime', index: 'createTime', width: 90}
         ],
@@ -65,6 +65,9 @@ $(function () {
 
     // 置顶按钮的格式化函数
     function isTopFormatter(cellvalue, options, rowdata) {
+        console.log('cellvalue ' ,cellvalue);
+        // console.log('options ' ,options);
+        //console.log('rowdata ' ,rowdata);
         var buttonClass = cellvalue === 0 ? 'btn-outline-secondary' : 'btn-warning';
         var buttonText = cellvalue === 0 ? '未置顶' : '已置顶';
         // 为置顶按钮添加一个类名和 data-id 属性来存储当前行的 ID
@@ -75,7 +78,7 @@ $(function () {
     function handleStatusButtonClick(event) {
         var blogId = $(event.currentTarget).data('id'); // 获取绑定的数据ID
         var confirmMessage = '您确定要改变该博客的状态吗？';
-
+        console.log(blogId)
         if (confirm(confirmMessage)) {
             // 用户点击了“确定”，发送 AJAX 请求到后台接口
             $.ajax({
@@ -90,7 +93,7 @@ $(function () {
                 },
                 error: function(xhr, status, error) {
                     // 处理错误响应
-                    alert('状态更新失败');
+                    alert('状态更新失败' + error);
                 }
             });
         }
@@ -100,11 +103,11 @@ $(function () {
     function handleIsTopButtonClick(event) {
         var blogId = $(event.currentTarget).data('id'); // 获取绑定的数据ID
         var confirmMessage = '您确定要修改文章的置顶状态吗？';
-
+        console.log(blogId)
         if (confirm(confirmMessage)) {
             // 用户点击了“确定”，发送 AJAX 请求到后台接口
             $.ajax({
-                url: '/admin/blogs/setblogsistop',
+                url: '/admin/blogs/setblogistop',
                 type: 'POST',
                 contentType: 'application/json',
                 data: JSON.stringify([blogId]), // 将 ID 包装成数组格式
@@ -115,7 +118,7 @@ $(function () {
                 },
                 error: function(xhr, status, error) {
                     // 处理错误响应
-                    alert('状态更新失败');
+                    alert('状态更新失败' + error);
                 }
             });
         }

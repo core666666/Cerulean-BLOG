@@ -243,6 +243,82 @@
         background: linear-gradient(to right, #007bff, #00a6ff);
         color: white;
     }
+
+    /* 置顶文章的特殊样式 */
+    .post-list-item.is-top {
+        position: relative;
+        border-left: 4px solid #1f83f0;
+        background: linear-gradient(to right, rgba(255,107,107,0.05), transparent);
+    }
+
+    /* 置顶标记样式 */
+    .top-badge {
+        position: absolute;
+        right: 20px;
+        background: #1f83f0;
+        color: white;
+        padding: 4px 12px;
+        border-radius: 16px;
+        font-size: 1.1rem;
+        font-weight: 600;
+        box-shadow: 0 2px 8px rgba(255,107,107,0.3);
+        transform: translateY(0);
+        transition: all 0.3s ease;
+    }
+
+    .post-list-item.is-top:hover .top-badge {
+        transform: translateY(-3px);
+        box-shadow: 0 4px 12px rgba(255,107,107,0.4);
+    }
+
+    /* 置顶文章标题特殊样式 */
+    .post-list-item.is-top .post-list-title a {
+        color: #1f83f0;
+    }
+
+    .post-list-item.is-top:hover .post-list-title a {
+        color: #1f83f0;
+    }
+
+    /* 置顶文章的元数据样式 */
+    .post-list-item.is-top .post-list-meta {
+        border-top-color: rgba(255,107,107,0.2);
+    }
+
+    /* 添加图标 */
+    .top-badge::before {
+        content: '📌';
+        margin-right: 4px;
+    }
+
+    /* 文章标签样式 */
+    .post-tags {
+        display: inline-flex;
+        gap: 0.5rem;
+        margin-left: 1.5rem;
+    }
+
+    .post-tag {
+        display: inline-flex;
+        align-items: center;
+        padding: 0.2rem 0.8rem;
+        border-radius: 12px;
+        background: rgba(31, 131, 240, 0.1);
+        color: #1f83f0;
+        font-size: 0.95rem;
+        transition: all 0.3s ease;
+        border: 1px solid rgba(31, 131, 240, 0.2);  /* 添加浅蓝色边框 */
+        box-shadow: 0 1px 3px rgba(31, 131, 240, 0.1);  /* 添加轻微阴影 */
+    }
+
+    .post-tag:hover {
+        background: #1f83f0;
+        color: white;
+        transform: translateY(-2px);
+        text-decoration: none;
+        border-color: #1f83f0;  /* 悬浮时边框颜色加深 */
+        box-shadow: 0 4px 8px rgba(31, 131, 240, 0.2);  /* 悬浮时阴影增强 */
+    }
 </style>
 <body>
 <div class="content">
@@ -259,18 +335,21 @@
                 <ol class="post-list">
                     <th:block th:if="${null != blogPageResult}">
                         <th:block th:each="blog,iterStat : ${blogPageResult.list}">
-                            <li class="post-list-item">
+                            <li class="post-list-item" th:classappend="${blog.blogIsTop == 1 ? 'is-top' : ''}">
+                                <div th:if="${blog.blogIsTop == 1}" class="top-badge">置顶</div>
                                 <h1 class="post-list-title">
-                                    <a th:href="@{'/blog/' + ${blog.blogId}}"><!-- class="hvr-underline-from-center"-->
-                                        <th:block th:text="${blog.blogTitle}"></th:block>
-<!--                                        <th:block th:text="${blog.blogViews}"></th:block>-->
-                                    </a>
+                                    <a th:href="@{'/blog/' + ${blog.blogId}}" th:text="${blog.blogTitle}"></a>
                                 </h1>
                                 <p class="post-list-meta">
-                                    <span class="octicon octicon-calendar"
-                                          th:text="${#dates.format(blog.createTime, 'yyyy-MM-dd')}"></span>
+                                    <span class="octicon octicon-calendar" th:text="${#dates.format(blog.createTime, 'yyyy-MM-dd')}"></span>
                                     <span class="octicon octicon-eye">
                                     <span th:text="${blog.blogViews}"></span> 阅读
+                                    </span>
+                                    <span class="post-tags">
+                                        <th:block th:each="tag : ${#strings.arraySplit(blog.blogTags, ',')}">
+                                            <a th:href="@{'/tag/' + ${tag}}" class="post-tag" th:text="${tag}"></a>
+                                        </th:block>
+                                    </span>
                                 </p>
                             </li>
                         </th:block>

@@ -147,6 +147,7 @@ $('#saveButton').click(function () {
     var blogContent = blogEditor.getMarkdown();
     var blogCoverImage = $('#blogCoverImage')[0].src;
     var blogStatus = $("input[name='blogStatus']:checked").val();
+    var blogIsTop = $("input[name='blogIsTop']:checked").val();
     var enableComment = $("input[name='enableComment']:checked").val();
     if (isNull(blogCoverImage) || blogCoverImage.indexOf('img-upload') != -1) {
         swal("封面图片不能为空", {
@@ -164,6 +165,7 @@ $('#saveButton').click(function () {
             "blogContent": blogContent,
             "blogCoverImage": blogCoverImage,
             "blogStatus": blogStatus,
+            "blogIsTop": blogIsTop,
             "enableComment": enableComment
     };
     // blogId大于0则为修改请求
@@ -179,6 +181,7 @@ $('#saveButton').click(function () {
             "blogContent": blogContent,
             "blogCoverImage": blogCoverImage,
             "blogStatus": blogStatus,
+            "blogIsTop": blogIsTop,
             "enableComment": enableComment
         };
     }

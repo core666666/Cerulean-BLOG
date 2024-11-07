@@ -4,10 +4,7 @@ import com.site.blog.my.core.config.Constants;
 import com.site.blog.my.core.entity.Blog;
 import com.site.blog.my.core.service.BlogService;
 import com.site.blog.my.core.service.CategoryService;
-import com.site.blog.my.core.util.MyBlogUtils;
-import com.site.blog.my.core.util.PageQueryUtil;
-import com.site.blog.my.core.util.Result;
-import com.site.blog.my.core.util.ResultGenerator;
+import com.site.blog.my.core.util.*;
 import org.springframework.stereotype.Controller;
 import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.*;
@@ -45,7 +42,8 @@ public class BlogController {
             return ResultGenerator.genFailResult("参数异常！");
         }
         PageQueryUtil pageUtil = new PageQueryUtil(params);
-        return ResultGenerator.genSuccessResult(blogService.getBlogsPage(pageUtil));
+        PageResult PageResult = blogService.getBlogsPage(pageUtil);
+        return ResultGenerator.genSuccessResult(PageResult);
     }
 
 
@@ -85,6 +83,7 @@ public class BlogController {
                        @RequestParam("blogContent") String blogContent,
                        @RequestParam("blogCoverImage") String blogCoverImage,
                        @RequestParam("blogStatus") Byte blogStatus,
+                       @RequestParam("blogIsTop") Byte blogIsTop,
                        @RequestParam("enableComment") Byte enableComment) {
         if (StringUtils.isEmpty(blogTitle)) {
             return ResultGenerator.genFailResult("请输入文章标题");
@@ -118,6 +117,7 @@ public class BlogController {
         blog.setBlogContent(blogContent);
         blog.setBlogCoverImage(blogCoverImage);
         blog.setBlogStatus(blogStatus);
+        blog.setBlogIsTop(blogIsTop);
         blog.setEnableComment(enableComment);
         String saveBlogResult = blogService.saveBlog(blog);
         if ("success".equals(saveBlogResult)) {
@@ -137,6 +137,7 @@ public class BlogController {
                          @RequestParam("blogContent") String blogContent,
                          @RequestParam("blogCoverImage") String blogCoverImage,
                          @RequestParam("blogStatus") Byte blogStatus,
+                         @RequestParam("blogIsTop") Byte blogIsTop,
                          @RequestParam("enableComment") Byte enableComment) {
         if (StringUtils.isEmpty(blogTitle)) {
             return ResultGenerator.genFailResult("请输入文章标题");
@@ -171,6 +172,7 @@ public class BlogController {
         blog.setBlogContent(blogContent);
         blog.setBlogCoverImage(blogCoverImage);
         blog.setBlogStatus(blogStatus);
+        blog.setBlogIsTop(blogIsTop);
         blog.setEnableComment(enableComment);
         String updateBlogResult = blogService.updateBlog(blog);
         if ("success".equals(updateBlogResult)) {
@@ -246,7 +248,7 @@ public class BlogController {
     /*
         修改文章置顶
      */
-    @PostMapping("/blogs/setblogsistop")
+    @PostMapping("/blogs/setblogistop")
     @ResponseBody
     public Result blogsistop(@RequestBody Long[] ids) {
         if (ids.length < 1) {

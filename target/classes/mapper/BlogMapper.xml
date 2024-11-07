@@ -10,6 +10,7 @@
         <result column="blog_category_name" jdbcType="VARCHAR" property="blogCategoryName"/>
         <result column="blog_tags" jdbcType="VARCHAR" property="blogTags"/>
         <result column="blog_status" jdbcType="TINYINT" property="blogStatus"/>
+        <result column="blog_is_top" jdbcType="TINYINT" property="blogIsTop"/>
         <result column="blog_views" jdbcType="BIGINT" property="blogViews"/>
         <result column="enable_comment" jdbcType="TINYINT" property="enableComment"/>
         <result column="is_deleted" jdbcType="TINYINT" property="isDeleted"/>
@@ -48,7 +49,7 @@
         <if test="blogCategoryId!=null">
             AND blog_category_id = #{blogCategoryId}
         </if>
-        order by blog_id desc
+        order by blog_is_top desc,blog_id desc
         <if test="start!=null and limit!=null">
             limit #{start},#{limit}
         </if>
@@ -161,6 +162,9 @@
             <if test="blogStatus != null">
                 blog_status,
             </if>
+            <if test="blogIsTop != null">
+                blog_is_top,
+            </if>
             <if test="blogViews != null">
                 blog_views,
             </if>
@@ -204,6 +208,9 @@
             </if>
             <if test="blogStatus != null">
                 #{blogStatus,jdbcType=TINYINT},
+            </if>
+            <if test="blogIsTop != null">
+                #{blogIsTop,jdbcType=TINYINT},
             </if>
             <if test="blogViews != null">
                 #{blogViews,jdbcType=BIGINT},
@@ -252,6 +259,9 @@
             <if test="blogStatus != null">
                 blog_status = #{blogStatus,jdbcType=TINYINT},
             </if>
+            <if test="blogIsTop != null">
+                blog_is_top = #{blogIsTop,jdbcType=TINYINT},
+            </if>
             <if test="blogViews != null">
                 blog_views = #{blogViews,jdbcType=BIGINT},
             </if>
@@ -282,6 +292,7 @@
       blog_category_name = #{blogCategoryName,jdbcType=VARCHAR},
       blog_tags = #{blogTags,jdbcType=VARCHAR},
       blog_status = #{blogStatus,jdbcType=TINYINT},
+      blog_is_top = #{blogIsTop,jdbcType=TINYINT},
       blog_views = #{blogViews,jdbcType=BIGINT},
       enable_comment = #{enableComment,jdbcType=TINYINT},
       is_deleted = #{isDeleted,jdbcType=TINYINT},
@@ -299,6 +310,7 @@
       blog_category_name = #{blogCategoryName,jdbcType=VARCHAR},
       blog_tags = #{blogTags,jdbcType=VARCHAR},
       blog_status = #{blogStatus,jdbcType=TINYINT},
+      blog_is_top = #{blogIsTop,jdbcType=TINYINT},
       blog_views = #{blogViews,jdbcType=BIGINT},
       enable_comment = #{enableComment,jdbcType=TINYINT},
       is_deleted = #{isDeleted,jdbcType=TINYINT},
