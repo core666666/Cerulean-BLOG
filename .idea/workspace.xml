@@ -6,6 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="cf0d0c26-dc73-4c96-8626-49549155ec3e" name="Default Changelist" comment="Default ChangelistDefault Changelist">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/blog/yummy-jekyll/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/blog/yummy-jekyll/index.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/site/blog/my/core/IcebergBlogApplication.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/site/blog/my/core/IcebergBlogApplication.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/site/blog/my/core/config/Constants.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/site/blog/my/core/config/Constants.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/site/blog/my/core/config/MyBlogWebMvcConfigurer.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/site/blog/my/core/config/MyBlogWebMvcConfigurer.class" afterDir="false" />
@@ -64,7 +65,16 @@
       <change beforePath="$PROJECT_DIR$/target/classes/com/site/blog/my/core/util/PatternUtil.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/site/blog/my/core/util/PatternUtil.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/site/blog/my/core/util/Result.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/site/blog/my/core/util/Result.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/site/blog/my/core/util/ResultGenerator.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/site/blog/my/core/util/ResultGenerator.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/com/site/blog/my/core/IcebergBlogApplicationTests.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/com/site/blog/my/core/IcebergBlogApplicationTests.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/templates/blog/yummy-jekyll/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/blog/yummy-jekyll/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/iceberg-blog-4.0.0-SNAPSHOT.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/iceberg-blog-4.0.0-SNAPSHOT.jar.original" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/maven-archiver/pom.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/createdFiles.lst" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/inputFiles.lst" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/surefire-reports/TEST-com.site.blog.my.core.IcebergBlogApplicationTests.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/surefire-reports/com.site.blog.my.core.IcebergBlogApplicationTests.txt" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -243,7 +253,7 @@
       <workItem from="1740363678150" duration="440000" />
       <workItem from="1740364128370" duration="285000" />
       <workItem from="1755076950523" duration="1304000" />
-      <workItem from="1755134350351" duration="1132000" />
+      <workItem from="1755134350351" duration="1877000" />
     </task>
     <servers />
   </component>
