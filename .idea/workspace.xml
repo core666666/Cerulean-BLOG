@@ -6,75 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="cf0d0c26-dc73-4c96-8626-49549155ec3e" name="Default Changelist" comment="Default ChangelistDefault Changelist">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/blog/yummy-jekyll/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/blog/yummy-jekyll/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/site/blog/my/core/IcebergBlogApplication.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/site/blog/my/core/IcebergBlogApplication.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/site/blog/my/core/config/Constants.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/site/blog/my/core/config/Constants.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/site/blog/my/core/config/MyBlogWebMvcConfigurer.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/site/blog/my/core/config/MyBlogWebMvcConfigurer.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/site/blog/my/core/controller/admin/AdminController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/site/blog/my/core/controller/admin/AdminController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/site/blog/my/core/controller/admin/BlogController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/site/blog/my/core/controller/admin/BlogController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/site/blog/my/core/controller/admin/CategoryController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/site/blog/my/core/controller/admin/CategoryController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/site/blog/my/core/controller/admin/CommentController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/site/blog/my/core/controller/admin/CommentController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/site/blog/my/core/controller/admin/ConfigurationController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/site/blog/my/core/controller/admin/ConfigurationController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/site/blog/my/core/controller/admin/LinkController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/site/blog/my/core/controller/admin/LinkController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/site/blog/my/core/controller/admin/TagController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/site/blog/my/core/controller/admin/TagController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/site/blog/my/core/controller/admin/UploadController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/site/blog/my/core/controller/admin/UploadController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/site/blog/my/core/controller/blog/MyBlogController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/site/blog/my/core/controller/blog/MyBlogController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/site/blog/my/core/controller/common/CommonController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/site/blog/my/core/controller/common/CommonController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/site/blog/my/core/controller/common/ErrorPageController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/site/blog/my/core/controller/common/ErrorPageController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/site/blog/my/core/controller/common/KaptchaConfig.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/site/blog/my/core/controller/common/KaptchaConfig.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/site/blog/my/core/controller/vo/BlogDetailVO.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/site/blog/my/core/controller/vo/BlogDetailVO.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/site/blog/my/core/controller/vo/BlogListVO.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/site/blog/my/core/controller/vo/BlogListVO.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/site/blog/my/core/controller/vo/SimpleBlogListVO.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/site/blog/my/core/controller/vo/SimpleBlogListVO.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/site/blog/my/core/dao/AdminUserMapper.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/site/blog/my/core/dao/AdminUserMapper.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/site/blog/my/core/dao/BlogCategoryMapper.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/site/blog/my/core/dao/BlogCategoryMapper.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/site/blog/my/core/dao/BlogCommentMapper.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/site/blog/my/core/dao/BlogCommentMapper.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/site/blog/my/core/dao/BlogConfigMapper.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/site/blog/my/core/dao/BlogConfigMapper.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/site/blog/my/core/dao/BlogLinkMapper.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/site/blog/my/core/dao/BlogLinkMapper.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/site/blog/my/core/dao/BlogMapper.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/site/blog/my/core/dao/BlogMapper.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/site/blog/my/core/dao/BlogTagMapper.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/site/blog/my/core/dao/BlogTagMapper.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/site/blog/my/core/dao/BlogTagRelationMapper.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/site/blog/my/core/dao/BlogTagRelationMapper.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/site/blog/my/core/entity/AdminUser.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/site/blog/my/core/entity/AdminUser.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/site/blog/my/core/entity/Blog.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/site/blog/my/core/entity/Blog.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/site/blog/my/core/entity/BlogCategory.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/site/blog/my/core/entity/BlogCategory.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/site/blog/my/core/entity/BlogComment.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/site/blog/my/core/entity/BlogComment.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/site/blog/my/core/entity/BlogConfig.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/site/blog/my/core/entity/BlogConfig.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/site/blog/my/core/entity/BlogLink.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/site/blog/my/core/entity/BlogLink.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/site/blog/my/core/entity/BlogTag.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/site/blog/my/core/entity/BlogTag.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/site/blog/my/core/entity/BlogTagCount.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/site/blog/my/core/entity/BlogTagCount.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/site/blog/my/core/entity/BlogTagRelation.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/site/blog/my/core/entity/BlogTagRelation.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/site/blog/my/core/interceptor/AdminLoginInterceptor.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/site/blog/my/core/interceptor/AdminLoginInterceptor.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/site/blog/my/core/service/AdminUserService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/site/blog/my/core/service/AdminUserService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/site/blog/my/core/service/BlogService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/site/blog/my/core/service/BlogService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/site/blog/my/core/service/CategoryService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/site/blog/my/core/service/CategoryService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/site/blog/my/core/service/CommentService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/site/blog/my/core/service/CommentService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/site/blog/my/core/service/ConfigService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/site/blog/my/core/service/ConfigService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/site/blog/my/core/service/LinkService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/site/blog/my/core/service/LinkService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/site/blog/my/core/service/TagService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/site/blog/my/core/service/TagService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/site/blog/my/core/service/impl/AdminUserServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/site/blog/my/core/service/impl/AdminUserServiceImpl.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/site/blog/my/core/service/impl/BlogServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/site/blog/my/core/service/impl/BlogServiceImpl.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/site/blog/my/core/service/impl/CategoryServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/site/blog/my/core/service/impl/CategoryServiceImpl.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/site/blog/my/core/service/impl/CommentServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/site/blog/my/core/service/impl/CommentServiceImpl.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/site/blog/my/core/service/impl/ConfigServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/site/blog/my/core/service/impl/ConfigServiceImpl.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/site/blog/my/core/service/impl/LinkServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/site/blog/my/core/service/impl/LinkServiceImpl.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/site/blog/my/core/service/impl/TagServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/site/blog/my/core/service/impl/TagServiceImpl.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/site/blog/my/core/util/MD5Util.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/site/blog/my/core/util/MD5Util.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/site/blog/my/core/util/MarkDownUtil.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/site/blog/my/core/util/MarkDownUtil.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/site/blog/my/core/util/MyBlogUtils.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/site/blog/my/core/util/MyBlogUtils.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/site/blog/my/core/util/PageQueryUtil.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/site/blog/my/core/util/PageQueryUtil.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/site/blog/my/core/util/PageResult.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/site/blog/my/core/util/PageResult.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/site/blog/my/core/util/PatternUtil.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/site/blog/my/core/util/PatternUtil.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/site/blog/my/core/util/Result.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/site/blog/my/core/util/Result.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/site/blog/my/core/util/ResultGenerator.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/site/blog/my/core/util/ResultGenerator.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/templates/blog/yummy-jekyll/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/blog/yummy-jekyll/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/iceberg-blog-4.0.0-SNAPSHOT.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/iceberg-blog-4.0.0-SNAPSHOT.jar.original" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/maven-archiver/pom.properties" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/createdFiles.lst" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/inputFiles.lst" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/surefire-reports/TEST-com.site.blog.my.core.IcebergBlogApplicationTests.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/surefire-reports/com.site.blog.my.core.IcebergBlogApplicationTests.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/templates/blog/yummy-jekyll/detail.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/blog/yummy-jekyll/detail.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -254,6 +186,7 @@
       <workItem from="1740364128370" duration="285000" />
       <workItem from="1755076950523" duration="1304000" />
       <workItem from="1755134350351" duration="1877000" />
+      <workItem from="1755245031232" duration="1348000" />
     </task>
     <servers />
   </component>
