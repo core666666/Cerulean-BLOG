@@ -6,7 +6,12 @@
   <component name="ChangeListManager">
     <list default="true" id="cf0d0c26-dc73-4c96-8626-49549155ec3e" name="Default Changelist" comment="Default ChangelistDefault Changelist">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/templates/blog/yummy-jekyll/detail.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/blog/yummy-jekyll/detail.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/blog/yummy-jekyll/assets/css/index.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/blog/yummy-jekyll/assets/css/index.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/blog/yummy-jekyll/header.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/blog/yummy-jekyll/header.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/blog/yummy-jekyll/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/blog/yummy-jekyll/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/static/blog/yummy-jekyll/assets/css/index.css" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/blog/yummy-jekyll/assets/css/index.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/templates/blog/yummy-jekyll/header.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/blog/yummy-jekyll/header.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/templates/blog/yummy-jekyll/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/blog/yummy-jekyll/index.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -187,6 +192,8 @@
       <workItem from="1755076950523" duration="1304000" />
       <workItem from="1755134350351" duration="1877000" />
       <workItem from="1755245031232" duration="1348000" />
+      <workItem from="1756346858296" duration="3375000" />
+      <workItem from="1756353169500" duration="884000" />
     </task>
     <servers />
   </component>

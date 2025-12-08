@@ -1,0 +1,848 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>从零搭建 Kubernetes 集群实战指南 | Geek Blog</title>
+<style>
+/* ==================== 基础重置 & 变量 ==================== */
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#0d1117;
+  --bg-card:#161b22;
+  --text:#c9d1d9;
+  --text-muted:#8b949e;
+  --accent:#58a6ff;
+  --accent-dim:#1f6feb;
+  --border:#30363d;
+  --green:#3fb950;
+  --purple:#a371f7;
+  --orange:#f0883e;
+  --red:#ff7b72;
+  --font-mono:'JetBrains Mono',Consolas,'Courier New',monospace;
+}
+html{scroll-behavior:auto}
+body{
+  background:var(--bg);
+  color:var(--text);
+  font-family:var(--font-mono);
+  font-size:15px;
+  line-height:1.8;
+  overflow-x:hidden;
+}
+a{color:var(--accent);text-decoration:none;transition:opacity .2s}
+a:hover{opacity:.8}
+
+/* ==================== Matrix 代码雨背景 ==================== */
+#matrix-bg{
+  position:fixed;
+  top:0;left:0;
+  width:100%;height:100%;
+  z-index:-1;
+  opacity:.1;
+  pointer-events:none;
+}
+
+/* ==================== 浮动代码符号 ==================== */
+.floating-symbols{
+  position:fixed;
+  top:0;left:0;
+  width:100%;height:100%;
+  z-index:-1;
+  pointer-events:none;
+  overflow:hidden;
+}
+.floating-symbol{
+  position:absolute;
+  font-size:1.5rem;
+  color:var(--accent);
+  opacity:0.08;
+  animation:float-up 15s linear infinite;
+}
+@keyframes float-up{
+  0%{transform:translateY(100vh) rotate(0deg);opacity:0}
+  10%{opacity:0.1}
+  90%{opacity:0.1}
+  100%{transform:translateY(-100px) rotate(360deg);opacity:0}
+}
+
+/* ==================== 滚动进度条 ==================== */
+#progress{
+  position:fixed;top:0;left:0;
+  width:0%;height:3px;
+  background:linear-gradient(90deg,var(--accent),var(--purple),var(--green));
+  z-index:1000;
+  transition:width .1s linear;
+}
+
+/* ==================== 导航栏 ==================== */
+nav{
+  position:fixed;top:0;left:0;right:0;
+  padding:1rem 2rem;
+  background:rgba(13,17,23,.95);
+  backdrop-filter:blur(8px);
+  border-bottom:1px solid var(--border);
+  z-index:999;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  height:60px;
+}
+.nav-back{
+  display:flex;align-items:center;gap:.5rem;
+  color:var(--text-muted);font-size:.9rem;
+  transition:color .2s;
+  padding:.4rem .8rem;
+  border:1px solid transparent;
+  border-radius:6px;
+}
+.nav-back:hover{color:var(--accent);border-color:var(--border);opacity:1}
+.nav-back::before{content:'← ';color:var(--green)}
+.logo{font-size:1.2rem;font-weight:700;color:var(--accent)}
+.logo::after{content:'_';animation:blink 1s step-end infinite}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:0}}
+
+/* ==================== 回到顶部按钮 ==================== */
+#to-top{
+  position:fixed;right:1.5rem;bottom:2rem;
+  background:var(--bg-card);
+  border:1px solid var(--border);
+  border-radius:8px;
+  padding:.6rem 1rem;
+  cursor:pointer;
+  opacity:0;visibility:hidden;
+  transition:all .3s;
+  z-index:1000;
+  display:flex;align-items:center;gap:.5rem;
+  font-family:var(--font-mono);
+  font-size:.8rem;
+  color:var(--text-muted);
+}
+#to-top:hover{
+  border-color:var(--accent);
+  color:var(--accent);
+  transform:translateY(-4px);
+  box-shadow:0 4px 20px rgba(88,166,255,.2);
+}
+#to-top.visible{opacity:1;visibility:visible}
+#to-top .bracket{color:var(--green)}
+#to-top .arrow{color:var(--accent);font-weight:bold}
+
+/* ==================== 文章容器 ==================== */
+main{padding-top:80px;padding-bottom:4rem}
+article{max-width:780px;margin:0 auto;padding:0 2rem}
+
+/* ==================== 文章头部 ==================== */
+.article-header{
+  margin-bottom:3rem;
+  padding-bottom:2rem;
+  border-bottom:1px solid var(--border);
+  opacity:0;
+  transform:translateY(20px);
+  animation:fadeInUp .6s ease forwards;
+}
+@keyframes fadeInUp{to{opacity:1;transform:translateY(0)}}
+.article-header h1{
+  font-size:1.8rem;
+  line-height:1.4;
+  margin-bottom:1.5rem;
+  color:#fff;
+}
+.article-header h1::before{
+  content:'# ';
+  color:var(--accent);
+}
+.article-meta{
+  display:flex;
+  flex-wrap:wrap;
+  gap:1.5rem;
+  align-items:center;
+  font-size:.85rem;
+  color:var(--text-muted);
+}
+.article-meta-item{
+  display:flex;
+  align-items:center;
+  gap:.4rem;
+  padding:.3rem .6rem;
+  background:var(--bg-card);
+  border:1px solid var(--border);
+  border-radius:6px;
+}
+.article-meta-item::before{color:var(--green)}
+.meta-date::before{content:'📅 '}
+.meta-time::before{content:'⏱️ '}
+.article-tags{display:flex;gap:.5rem;flex-wrap:wrap}
+.article-tag{
+  background:var(--accent-dim);
+  color:#fff;
+  padding:.25rem .7rem;
+  border-radius:4px;
+  font-size:.75rem;
+  transition:transform .2s;
+}
+.article-tag:hover{transform:translateY(-2px)}
+
+/* ==================== 目录侧边栏 ==================== */
+.toc{
+  position:fixed;
+  left:calc(50% + 420px);
+  top:100px;
+  width:220px;
+  font-size:.8rem;
+  opacity:0;
+  animation:fadeIn .6s .3s ease forwards;
+  background:var(--bg-card);
+  border:1px solid var(--border);
+  border-radius:8px;
+  padding:1rem;
+}
+@keyframes fadeIn{to{opacity:1}}
+.toc-title{
+  color:var(--accent);
+  font-size:.85rem;
+  margin-bottom:.75rem;
+  display:flex;align-items:center;gap:.5rem;
+}
+.toc-title::before{content:'$';color:var(--green)}
+.toc-list{list-style:none}
+.toc-list li{margin-bottom:.4rem}
+.toc-list a{
+  color:var(--text-muted);
+  transition:color .2s,padding-left .2s;
+  display:block;
+  padding:.2rem 0 .2rem .5rem;
+  border-left:2px solid transparent;
+  font-size:.8rem;
+}
+.toc-list a:hover,.toc-list a.active{
+  color:var(--accent);
+  border-left-color:var(--accent);
+  opacity:1;
+}
+.toc-list .toc-h3{padding-left:1.25rem;font-size:.75rem}
+@media(max-width:1200px){.toc{display:none}}
+
+/* ==================== 文章内容 ==================== */
+.article-content{
+  opacity:0;
+  animation:fadeInUp .6s .15s ease forwards;
+}
+.article-content h2{
+  font-size:1.4rem;
+  margin:2.5rem 0 1rem;
+  color:var(--accent);
+  padding-bottom:.5rem;
+  border-bottom:1px solid var(--border);
+  scroll-margin-top:80px;
+}
+.article-content h2::before{content:'## ';color:var(--text-muted)}
+.article-content h3{
+  font-size:1.15rem;
+  margin:2rem 0 .75rem;
+  color:#fff;
+  scroll-margin-top:80px;
+}
+.article-content h3::before{content:'### ';color:var(--text-muted)}
+.article-content p{margin-bottom:1.25rem;color:var(--text)}
+.article-content ul,.article-content ol{margin-bottom:1.25rem;padding-left:1.5rem}
+.article-content li{margin-bottom:.5rem}
+.article-content li::marker{color:var(--accent)}
+.article-content strong{color:#fff}
+.article-content em{color:var(--purple)}
+.article-content blockquote{
+  border-left:4px solid var(--accent);
+  padding:.75rem 1rem;
+  margin:1.5rem 0;
+  background:var(--bg-card);
+  border-radius:0 8px 8px 0;
+  color:var(--text-muted);
+}
+.article-content blockquote strong{color:var(--accent)}
+
+/* ==================== 代码块 ==================== */
+.article-content pre{
+  background:var(--bg-card);
+  border:1px solid var(--border);
+  border-radius:8px;
+  padding:0;
+  overflow:hidden;
+  margin:1.5rem 0;
+  position:relative;
+}
+.article-content code{font-family:var(--font-mono);font-size:.85rem}
+.article-content p code{
+  background:var(--bg-card);
+  padding:.2rem .5rem;
+  border-radius:4px;
+  font-size:.85em;
+  color:var(--accent);
+  border:1px solid var(--border);
+}
+.code-header{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:.5rem 1rem;
+  background:#21262d;
+  border-bottom:1px solid var(--border);
+}
+.code-lang{
+  font-size:.75rem;
+  color:var(--text-muted);
+  display:flex;align-items:center;gap:.5rem;
+}
+.code-lang::before{content:'>';color:var(--green)}
+.copy-btn{
+  background:transparent;
+  border:1px solid var(--border);
+  color:var(--text-muted);
+  padding:.25rem .6rem;
+  border-radius:4px;
+  font-size:.75rem;
+  cursor:pointer;
+  transition:all .2s;
+  font-family:var(--font-mono);
+}
+.copy-btn:hover{border-color:var(--accent);color:var(--accent)}
+.copy-btn.copied{border-color:var(--green);color:var(--green)}
+.code-body{padding:1rem;overflow-x:auto}
+
+/* Prism 轻量高亮 */
+.token.comment{color:#8b949e;font-style:italic}
+.token.keyword{color:var(--red)}
+.token.string{color:#a5d6ff}
+.token.function{color:var(--purple)}
+.token.number{color:#79c0ff}
+.token.operator{color:#79c0ff}
+.token.punctuation{color:#c9d1d9}
+.token.class-name{color:var(--orange)}
+.token.property{color:var(--green)}
+
+/* ==================== 提示框 ==================== */
+.callout{
+  padding:1rem 1.25rem;
+  margin:1.5rem 0;
+  border-radius:8px;
+  border-left:4px solid;
+  display:flex;
+  gap:.75rem;
+  align-items:flex-start;
+  background:var(--bg-card);
+}
+.callout-icon{font-size:1.2rem;flex-shrink:0}
+.callout-content{flex:1}
+.callout-info{border-color:var(--accent)}
+.callout-warn{border-color:var(--orange)}
+.callout-tip{border-color:var(--green)}
+.callout-info .callout-icon{color:var(--accent)}
+.callout-warn .callout-icon{color:var(--orange)}
+.callout-tip .callout-icon{color:var(--green)}
+
+/* ==================== 文章底部 ==================== */
+.article-footer{
+  margin-top:4rem;
+  padding-top:2rem;
+  border-top:1px solid var(--border);
+}
+.share-section{margin-bottom:2.5rem}
+.share-title{
+  font-size:.85rem;
+  color:var(--text-muted);
+  margin-bottom:1rem;
+  display:flex;align-items:center;gap:.5rem;
+}
+.share-title::before{content:'$';color:var(--green)}
+.share-btns{display:flex;gap:.75rem}
+.share-btn{
+  padding:.5rem 1rem;
+  border-radius:6px;
+  background:var(--bg-card);
+  border:1px solid var(--border);
+  display:flex;align-items:center;justify-content:center;gap:.5rem;
+  cursor:pointer;
+  transition:all .2s;
+  font-family:var(--font-mono);
+  font-size:.8rem;
+  color:var(--text-muted);
+}
+.share-btn:hover{border-color:var(--accent);color:var(--accent);transform:translateY(-2px)}
+.share-btn svg{width:16px;height:16px;fill:currentColor}
+
+/* ==================== 上下篇导航 ==================== */
+.post-nav{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:1rem;
+  position:relative;
+}
+.post-nav-item{
+  background:var(--bg-card);
+  border:1px solid var(--border);
+  border-radius:8px;
+  padding:1.25rem;
+  transition:all .2s;
+  display:block;
+  position:relative;
+  overflow:hidden;
+}
+.post-nav-item::before{
+  content:'';
+  position:absolute;
+  top:0;left:-100%;
+  width:100%;height:2px;
+  background:linear-gradient(90deg,transparent,var(--accent),transparent);
+  transition:left .4s;
+}
+.post-nav-item:hover::before{left:100%}
+.post-nav-item:hover{border-color:var(--accent);transform:translateY(-2px);opacity:1}
+.post-nav-item.next{text-align:right}
+.post-nav-label{
+  font-size:.75rem;
+  color:var(--text-muted);
+  margin-bottom:.5rem;
+  display:flex;align-items:center;gap:.4rem;
+}
+.post-nav-item.prev .post-nav-label::before{content:'← ';color:var(--green)}
+.post-nav-item.next .post-nav-label{justify-content:flex-end}
+.post-nav-item.next .post-nav-label::after{content:' →';color:var(--green)}
+.post-nav-title{font-size:.9rem;color:var(--text);line-height:1.4}
+.post-nav-item:hover .post-nav-title{color:var(--accent)}
+@media(max-width:600px){
+  .post-nav{grid-template-columns:1fr}
+  .post-nav-item.next{text-align:left}
+  .post-nav-item.next .post-nav-label{justify-content:flex-start}
+  .post-nav-item.next .post-nav-label::after{content:'';display:none}
+  .post-nav-item.next .post-nav-label::before{content:'→ ';color:var(--green)}
+}
+
+/* ==================== 页脚 ==================== */
+footer.site-footer{
+  text-align:center;
+  padding:2rem;
+  color:var(--text-muted);
+  font-size:.85rem;
+  border-top:1px solid var(--border);
+  margin-top:4rem;
+}
+footer a{margin:0 .5rem}
+
+/* ==================== 字体 ==================== */
+@font-face{
+  font-family:'JetBrains Mono';
+  font-style:normal;
+  font-weight:400;
+  src:local('JetBrains Mono'),local('Consolas');
+}
+</style>
+</head>
+<body>
+
+<!-- ==================== Matrix 代码雨背景 ==================== -->
+<canvas id="matrix-bg"></canvas>
+
+<!-- ==================== 浮动代码符号 ==================== -->
+<div class="floating-symbols" id="floating-symbols"></div>
+
+<!-- ==================== 滚动进度条 ==================== -->
+<div id="progress"></div>
+
+<!-- ==================== 导航栏 ==================== -->
+<nav>
+  <a href="index.html" class="nav-back">cd ..</a>
+  <div class="logo">&lt;Geek/&gt;</div>
+</nav>
+
+<!-- ==================== 回到顶部按钮 ==================== -->
+<button id="to-top" aria-label="回到顶部">
+  <span class="bracket">[</span>
+  <span class="arrow">↑</span>
+  <span>top</span>
+  <span class="bracket">]</span>
+</button>
+
+<!-- ==================== 目录侧边栏 ==================== -->
+<aside class="toc">
+  <div class="toc-title">cat toc.md</div>
+  <ul class="toc-list">
+    <li><a href="#intro">前言</a></li>
+    <li><a href="#prereq">环境准备</a></li>
+    <li><a href="#prereq-hardware" class="toc-h3">硬件要求</a></li>
+    <li><a href="#prereq-software" class="toc-h3">软件要求</a></li>
+    <li><a href="#install">安装步骤</a></li>
+    <li><a href="#install-master" class="toc-h3">Master 节点</a></li>
+    <li><a href="#install-worker" class="toc-h3">Worker 节点</a></li>
+    <li><a href="#verify">验证集群</a></li>
+    <li><a href="#summary">总结</a></li>
+  </ul>
+</aside>
+
+<!-- ==================== 主体内容 ==================== -->
+<main>
+<article>
+
+  <!-- ========== 文章头部 ========== -->
+  <header class="article-header">
+    <h1>从零搭建 Kubernetes 集群实战指南</h1>
+    <div class="article-meta">
+      <span class="article-meta-item meta-date">2025-12-01</span>
+      <span class="article-meta-item meta-time">约 8 分钟</span>
+      <div class="article-tags">
+        <span class="article-tag">DevOps</span>
+        <span class="article-tag">Kubernetes</span>
+        <span class="article-tag">云原生</span>
+      </div>
+    </div>
+  </header>
+
+  <!-- ========== 文章内容 ========== -->
+  <div class="article-content">
+
+    <h2 id="intro">前言</h2>
+    <p>Kubernetes（K8s）已成为容器编排的事实标准。无论是个人学习还是生产部署，掌握从零搭建 K8s 集群的能力都是云原生时代的必备技能。本文将带你一步步完成一个可用于学习和测试的 K8s 集群。</p>
+    
+    <blockquote>
+      <strong>Note:</strong> 本文基于 Kubernetes v1.28，使用 kubeadm 进行部署，适合初学者入门实践。
+    </blockquote>
+
+    <h2 id="prereq">环境准备</h2>
+    
+    <h3 id="prereq-hardware">硬件要求</h3>
+    <p>我们将搭建一个 <strong>1 Master + 2 Worker</strong> 的最小集群架构：</p>
+    <ul>
+      <li><strong>Master 节点：</strong>2 核 CPU / 4 GB 内存 / 40 GB 硬盘</li>
+      <li><strong>Worker 节点：</strong>2 核 CPU / 2 GB 内存 / 20 GB 硬盘（× 2）</li>
+      <li>所有节点需在同一内网，可互相通信</li>
+    </ul>
+
+    <div class="callout callout-tip">
+      <span class="callout-icon">💡</span>
+      <div class="callout-content">推荐使用 Multipass 或 Vagrant 快速创建虚拟机进行实验。</div>
+    </div>
+
+    <h3 id="prereq-software">软件要求</h3>
+    <p>在所有节点上执行以下准备工作：</p>
+    
+    <pre>
+<div class="code-header"><span class="code-lang">bash</span><button class="copy-btn" onclick="copyCode(this)">复制</button></div><div class="code-body"><code><span class="token comment"># 关闭 swap（K8s 要求）</span>
+<span class="token function">sudo</span> swapoff -a
+<span class="token function">sudo</span> sed -i <span class="token string">'/ swap / s/^/#/'</span> /etc/fstab
+
+<span class="token comment"># 加载必要的内核模块</span>
+<span class="token function">cat</span> <span class="token operator"><<</span>EOF <span class="token operator">|</span> <span class="token function">sudo</span> tee /etc/modules-load.d/k8s.conf
+overlay
+br_netfilter
+EOF
+
+<span class="token function">sudo</span> modprobe overlay
+<span class="token function">sudo</span> modprobe br_netfilter
+
+<span class="token comment"># 配置网络参数</span>
+<span class="token function">cat</span> <span class="token operator"><<</span>EOF <span class="token operator">|</span> <span class="token function">sudo</span> tee /etc/sysctl.d/k8s.conf
+net.bridge.bridge-nf-call-iptables  = 1
+net.bridge.bridge-nf-call-ip6tables = 1
+net.ipv4.ip_forward                 = 1
+EOF
+
+<span class="token function">sudo</span> sysctl --system</code></div></pre>
+
+    <h2 id="install">安装步骤</h2>
+    
+    <h3 id="install-master">Master 节点配置</h3>
+    <p>首先安装容器运行时 <code>containerd</code> 和 K8s 组件：</p>
+
+    <pre>
+<div class="code-header"><span class="code-lang">bash</span><button class="copy-btn" onclick="copyCode(this)">复制</button></div><div class="code-body"><code><span class="token comment"># 安装 containerd</span>
+<span class="token function">sudo</span> apt-get update
+<span class="token function">sudo</span> apt-get install -y containerd
+
+<span class="token comment"># 配置 containerd</span>
+<span class="token function">sudo</span> mkdir -p /etc/containerd
+containerd config default <span class="token operator">|</span> <span class="token function">sudo</span> tee /etc/containerd/config.toml
+<span class="token function">sudo</span> systemctl restart containerd
+
+<span class="token comment"># 安装 kubeadm, kubelet, kubectl</span>
+<span class="token function">sudo</span> apt-get install -y apt-transport-https ca-certificates curl
+
+<span class="token function">sudo</span> apt-get update
+<span class="token function">sudo</span> apt-get install -y kubelet kubeadm kubectl
+<span class="token function">sudo</span> apt-mark hold kubelet kubeadm kubectl</code></div></pre>
+
+    <p>初始化 Master 节点：</p>
+
+    <pre>
+<div class="code-header"><span class="code-lang">bash</span><button class="copy-btn" onclick="copyCode(this)">复制</button></div><div class="code-body"><code><span class="token comment"># 初始化集群（替换为你的 Master IP）</span>
+<span class="token function">sudo</span> kubeadm init \
+  --apiserver-advertise-address=<span class="token number">192.168.1.100</span> \
+  --pod-network-cidr=<span class="token number">10.244.0.0</span>/16
+
+<span class="token comment"># 配置 kubectl</span>
+<span class="token function">mkdir</span> -p <span class="token variable">$HOME</span>/.kube
+<span class="token function">sudo</span> <span class="token function">cp</span> -i /etc/kubernetes/admin.conf <span class="token variable">$HOME</span>/.kube/config
+<span class="token function">sudo</span> <span class="token function">chown</span> <span class="token variable">$(id -u)</span>:<span class="token variable">$(id -g)</span> <span class="token variable">$HOME</span>/.kube/config
+
+<span class="token comment"># 安装 Flannel 网络插件</span>
+kubectl apply -f https://raw.githubusercontent.com/flannel-io/flannel/master/Documentation/kube-flannel.yml</code></pre></code></div></pre>
+
+    <div class="callout callout-info">
+      <span class="callout-icon">📌</span>
+      <div class="callout-content">初始化完成后会输出 <code>kubeadm join</code> 命令，请妥善保存，Worker 节点需要用到。</div>
+    </div>
+
+    <h3 id="install-worker">Worker 节点配置</h3>
+    <p>在 Worker 节点上同样安装 containerd 和 K8s 组件（步骤同上），然后执行加入命令：</p>
+
+    <pre>
+<div class="code-header"><span class="code-lang">bash</span><button class="copy-btn" onclick="copyCode(this)">复制</button></div><div class="code-body"><code><span class="token comment"># 使用 Master 初始化时输出的 join 命令</span>
+<span class="token function">sudo</span> kubeadm join <span class="token number">192.168.1.100</span>:6443 \
+  --token <span class="token string">abcdef.0123456789abcdef</span> \
+  --discovery-token-ca-cert-hash sha256:<span class="token string">your-hash-here</span></code></div></pre>
+
+    <h2 id="verify">验证集群</h2>
+    <p>回到 Master 节点，检查集群状态：</p>
+
+    <pre>
+<div class="code-header"><span class="code-lang">bash</span><button class="copy-btn" onclick="copyCode(this)">复制</button></div><div class="code-body"><code><span class="token comment"># 查看节点状态</span>
+kubectl get nodes
+
+<span class="token comment"># 预期输出</span>
+NAME       STATUS   ROLES           AGE   VERSION
+master     Ready    control-plane   10m   v1.28.0
+worker-1   Ready    <span class="token operator"><</span>none<span class="token operator">></span>          5m    v1.28.0
+worker-2   Ready    <span class="token operator"><</span>none<span class="token operator">></span>          5m    v1.28.0
+
+<span class="token comment"># 部署一个测试应用</span>
+kubectl create deployment nginx --image=nginx
+kubectl expose deployment nginx --port=80 --type=NodePort
+kubectl get svc nginx</code></div></pre>
+
+    <p>访问任意节点 IP + NodePort 即可看到 Nginx 欢迎页 🎉</p>
+
+    <h2 id="summary">总结</h2>
+    <p>恭喜！你已经成功搭建了一个基础的 Kubernetes 集群。接下来可以尝试：</p>
+    <ul>
+      <li>部署更复杂的应用（如 <em>WordPress + MySQL</em>）</li>
+      <li>学习 Helm 包管理器简化部署流程</li>
+      <li>配置 Ingress Controller 实现域名路由</li>
+      <li>探索 Prometheus + Grafana 监控方案</li>
+    </ul>
+
+    <div class="callout callout-warn">
+      <span class="callout-icon">⚠️</span>
+      <div class="callout-content">生产环境请务必配置 RBAC、网络策略、资源配额等安全措施，本文仅供学习参考。</div>
+    </div>
+
+    <p>如有问题欢迎在评论区留言讨论，Happy Hacking! 🚀</p>
+
+  </div>
+
+  <!-- ========== 文章底部 ========== -->
+  <footer class="article-footer">
+    
+    <!-- 分享按钮 -->
+    <div class="share-section">
+      <div class="share-title">share --to</div>
+      <div class="share-btns">
+        <button class="share-btn" onclick="copyLink()">
+          <svg viewBox="0 0 24 24"><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"/></svg>
+          复制链接
+        </button>
+        <button class="share-btn" onclick="shareTwitter()">
+          <svg viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+          Twitter
+        </button>
+      </div>
+    </div>
+
+    <!-- 上下篇导航 -->
+    <nav class="post-nav">
+      <a href="detail.html?id=2" class="post-nav-item prev">
+        <div class="post-nav-label">上一篇</div>
+        <div class="post-nav-title">Rust 异步编程：Tokio 深度解析</div>
+      </a>
+      <a href="detail.html?id=3" class="post-nav-item next">
+        <div class="post-nav-label">下一篇</div>
+        <div class="post-nav-title">为什么我从 VSCode 切换到 Neovim</div>
+      </a>
+    </nav>
+
+  </footer>
+
+</article>
+</main>
+
+<!-- ==================== 页脚 ==================== -->
+<footer class="site-footer">
+  <p>
+    <a href="https://github.com" target="_blank">GitHub</a> ·
+    <a href="https://twitter.com" target="_blank">Twitter</a> ·
+    <a href="mailto:hi@geek.dev">Email</a>
+  </p>
+  <p style="margin-top:.5rem">© 2025 Geek Blog · Built with ❤️ and <span style="color:var(--green)">vim</span></p>
+</footer>
+
+<!-- ==================== JavaScript ==================== -->
+<script>
+(function() {
+  'use strict';
+
+  /* ==================== Matrix 代码雨 ==================== */
+  var canvas = document.getElementById('matrix-bg');
+  var ctx = canvas.getContext('2d');
+  canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight;
+  
+  var chars = '01<>{}[]/*-+=;:$#@!func()=>kubectl'.split('');
+  var fontSize = 14;
+  var columns = Math.floor(canvas.width / fontSize);
+  var drops = [];
+  for (var i = 0; i < columns; i++) drops[i] = Math.random() * -100;
+  
+  function drawMatrix() {
+    ctx.fillStyle = 'rgba(13, 17, 23, 0.04)';
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
+    ctx.fillStyle = '#58a6ff';
+    ctx.font = fontSize + 'px monospace';
+    for (var i = 0; i < drops.length; i++) {
+      var text = chars[Math.floor(Math.random() * chars.length)];
+      ctx.fillText(text, i * fontSize, drops[i] * fontSize);
+      if (drops[i] * fontSize > canvas.height && Math.random() > 0.98) drops[i] = 0;
+      drops[i]++;
+    }
+  }
+  setInterval(drawMatrix, 60);
+  window.addEventListener('resize', function() {
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+  });
+
+  /* ==================== 浮动代码符号 ==================== */
+  var symbols = ['{ }', '< />', '( )', '[ ]', '&&', '||', '=>', '++', '/**/', 'k8s'];
+  var container = document.getElementById('floating-symbols');
+  function createSymbol() {
+    var el = document.createElement('span');
+    el.className = 'floating-symbol';
+    el.textContent = symbols[Math.floor(Math.random() * symbols.length)];
+    el.style.left = Math.random() * 100 + '%';
+    el.style.animationDuration = (12 + Math.random() * 8) + 's';
+    el.style.animationDelay = Math.random() * 3 + 's';
+    container.appendChild(el);
+    setTimeout(function() { el.remove(); }, 20000);
+  }
+  for (var i = 0; i < 8; i++) setTimeout(createSymbol, i * 500);
+  setInterval(createSymbol, 3000);
+
+  /* ==================== 滚动进度条 ==================== */
+  var progress = document.getElementById('progress');
+  function updateProgress() {
+    var scrollTop = window.scrollY;
+    var docHeight = document.documentElement.scrollHeight - window.innerHeight;
+    var scrollPercent = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
+    progress.style.width = scrollPercent + '%';
+  }
+
+  /* ==================== 回到顶部按钮 ==================== */
+  var toTop = document.getElementById('to-top');
+  function toggleToTop() {
+    if (window.scrollY > 400) toTop.classList.add('visible');
+    else toTop.classList.remove('visible');
+  }
+  toTop.addEventListener('click', function() {
+    var start = window.scrollY;
+    var startTime = performance.now();
+    var duration = 500;
+    function animate(currentTime) {
+      var elapsed = currentTime - startTime;
+      var ratio = Math.min(elapsed / duration, 1);
+      var ease = 1 - Math.pow(1 - ratio, 3);
+      window.scrollTo(0, start * (1 - ease));
+      if (ratio < 1) requestAnimationFrame(animate);
+    }
+    requestAnimationFrame(animate);
+  });
+
+  /* ==================== 目录高亮 ==================== */
+  var tocLinks = document.querySelectorAll('.toc-list a');
+  var headings = document.querySelectorAll('.article-content h2, .article-content h3');
+  function updateToc() {
+    var current = '';
+    headings.forEach(function(heading) {
+      if (heading.getBoundingClientRect().top <= 150) current = heading.id;
+    });
+    tocLinks.forEach(function(link) {
+      link.classList.remove('active');
+      if (link.getAttribute('href') === '#' + current) link.classList.add('active');
+    });
+  }
+
+  /* ==================== 锚点平滑滚动 ==================== */
+  document.querySelectorAll('a[href^="#"]').forEach(function(anchor) {
+    anchor.addEventListener('click', function(e) {
+      var targetId = this.getAttribute('href').slice(1);
+      if (!targetId) return;
+      var target = document.getElementById(targetId);
+      if (!target) return;
+      e.preventDefault();
+      var targetPos = target.getBoundingClientRect().top + window.scrollY - 80;
+      var start = window.scrollY;
+      var distance = targetPos - start;
+      var startTime = performance.now();
+      var duration = 600;
+      function animate(currentTime) {
+        var elapsed = currentTime - startTime;
+        var ratio = Math.min(elapsed / duration, 1);
+        var ease = ratio < 0.5 ? 4 * ratio * ratio * ratio : 1 - Math.pow(-2 * ratio + 2, 3) / 2;
+        window.scrollTo(0, start + distance * ease);
+        if (ratio < 1) requestAnimationFrame(animate);
+      }
+      requestAnimationFrame(animate);
+    });
+  });
+
+  /* ==================== 滚动事件监听 ==================== */
+  var ticking = false;
+  window.addEventListener('scroll', function() {
+    if (!ticking) {
+      requestAnimationFrame(function() {
+        updateProgress();
+        toggleToTop();
+        updateToc();
+        ticking = false;
+      });
+      ticking = true;
+    }
+  });
+
+  updateProgress();
+  toggleToTop();
+  updateToc();
+})();
+
+/* ==================== 代码复制功能 ==================== */
+function copyCode(btn) {
+  var pre = btn.closest('pre');
+  var code = pre.querySelector('code');
+  navigator.clipboard.writeText(code.textContent).then(function() {
+    btn.textContent = '已复制 ✓';
+    btn.classList.add('copied');
+    setTimeout(function() {
+      btn.textContent = '复制';
+      btn.classList.remove('copied');
+    }, 2000);
+  });
+}
+
+/* ==================== 分享功能 ==================== */
+function copyLink() {
+  navigator.clipboard.writeText(window.location.href).then(function() {
+    alert('链接已复制到剪贴板');
+  });
+}
+function shareTwitter() {
+  var title = document.querySelector('h1').textContent;
+  var url = encodeURIComponent(window.location.href);
+  window.open('https://twitter.com/intent/tweet?text=' + encodeURIComponent(title) + '&url=' + url, '_blank');
+}
+</script>
+</body>
+</html>
